@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mybatis 공동적인 환경 설정 -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration> 
+	<settings> 
+		<setting name="cacheEnabled" value="false"/> 
+		<setting name="useGeneratedKeys" value="true"/> 
+		<setting name="defaultExecutorType" value="REUSE"/> 
+	</settings> 
+	<typeAliases> <!-- 사용할 빈을 Alias로 등록하여 사용 -->
+		<typeAlias alias="member" type="com.TM.LTE.bean.Member"/> 
+		<typeAlias alias="hotel" type="com.TM.LTE.bean.HotelProduct"/> 
+		<typeAlias alias="air" type="com.TM.LTE.bean.AirProduct"/> 
+		<typeAlias alias="passenger" type="com.TM.LTE.bean.Passenger"/> 
+		<typeAlias alias="image" type="com.TM.LTE.bean.Image"/> 
+	</typeAliases>	
+</configuration>

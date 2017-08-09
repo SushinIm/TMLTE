@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+@Controller
 public class PageMovingController {
 	private ModelAndView mav;   
 
@@ -14,12 +15,4 @@ public class PageMovingController {
 	      mav.setViewName("main");
 	      return mav;
 	   }
-	
-	@RequestMapping(value = "/mypageFrm", method = RequestMethod.GET)
-	public ModelAndView mypageFrm() {
-		System.out.println("mypageFrm");
-		mav=new ModelAndView();
-		mav.setViewName("sellerpage");//.jsp
-		return mav;
-	}
 }

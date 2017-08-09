@@ -9,6 +9,25 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+	<ul class="horizonul">
+		<li>
+			<span>국내</span>
+			<ul class="verticalul">
+				<li><a href="airInternals">항공</a></li>
+				<li><a href="hotelInternals">숙박</a></li>
+				<li><a href="ticketInternals">티켓</a></li>			
+			</ul>
+		</li>
+		<li>해외</li>
+		<li>정보</li>
+	</ul>
+	
+	<input type="hidden" value="판매자" name="m_part"/>
+	<form name="mypageForm" method="get">
+		<input type="button" value="판매자마이페이지" onclick="mypage(this)">
+	</form>
+=======
 	<div id="header">
 		<div id="home">
 			<a href="main.jsp"><img src="homeimage"/></a>
@@ -45,6 +64,7 @@
 	
 	</div>
 	
+>>>>>>> 297a10546dd898983e023d9c53438c8486fdc139
 </body>
 <script>
 	function mypage(elem){	//파일 element받음
@@ -54,6 +74,9 @@
 		frm.submit();
 	//}
 	}//function End
+<<<<<<< HEAD
+</script>
+=======
 	
 	function searchview(){
 		$('#imagesearch_layer').addClass('open');
@@ -93,4 +116,5 @@
 	<div id="bg_layer"></div>
 	<div id="contents_layer"></div>
 </div>
+>>>>>>> 297a10546dd898983e023d9c53438c8486fdc139
 </html>

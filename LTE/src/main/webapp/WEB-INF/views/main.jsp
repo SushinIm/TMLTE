@@ -17,7 +17,7 @@
 				<li><a href="hotelInternals">숙박</a></li>
 				<li><a href="ticketInternals">티켓</a></li>			
 			</ul>
-		</li>asdfasdf
+		</li>
 		<li>해외</li>
 		<li>정보</li>
 	</ul>

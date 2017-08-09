@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.TM.LTE.bean.ProdHotel;
 import com.TM.LTE.bean.ProdTicket;
+import com.TM.LTE.bean.ReserveHotel;
+import com.TM.LTE.bean.ReserveTicket;
 @Repository
 public class SellerDao {
 	@Autowired
@@ -23,6 +25,14 @@ public class SellerDao {
 
 	public List<ProdTicket> getTicketProdList(String id) {
 		return sqlSession.selectList("pticket.get-getTicketProdList", id);
+	}
+
+	public List<ReserveHotel> getHotelReserveList(String id) {
+		return sqlSession.selectList("rhotel.getHotelReserveList", id);
+	}
+
+	public List<ReserveTicket> getTicketReserveList(String id) {
+		return sqlSession.selectList("rticket.getTicketReserveList", id);
 	}
 
 	

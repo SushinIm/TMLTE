@@ -21,5 +21,19 @@
 		<li>해외</li>
 		<li>정보</li>
 	</ul>
+	
+	<input type="hidden" value="판매자" name="m_part"/>
+	<form name="mypageForm" method="get">
+		<input type="button" value="판매자마이페이지" onclick="mypage(this)">
+	</form>
 </body>
+<script>
+	function mypage(elem){	//파일 element받음
+		var frm = document.mypageForm;
+	//if('${m_part}' == "판매자"){
+		frm.action="mypageFrm";
+		frm.submit();
+	//}
+	}//function End
+</script>
 </html>

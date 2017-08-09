@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 public class PageMovingController {
-	private ModelAndView mav;   //�슂泥�, ���옣 �걹�궃�썑 �궗�씪�졇�꽌 
+	private ModelAndView mav;   
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	   public ModelAndView main() {

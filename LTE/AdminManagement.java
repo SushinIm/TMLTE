@@ -12,7 +12,7 @@ import com.TM.LTE.dao.MemberDao;
 @Service
 public class AdminManagement {
 	@Autowired
-	private Member mDao;
+	private MemberDao mDao;
 	@Autowired
 	private HttpSession session;
 
@@ -42,7 +42,7 @@ public class AdminManagement {
 	}
 
 	private void adminSeller(Member mb) {
-
+		
 	}
 
 	private void adminBuyer(Member mb) {
@@ -50,17 +50,14 @@ public class AdminManagement {
 	}
 
 	private void adminBlack(Member mb) {
-		// TODO Auto-generated method stub
 
 	}
 
 	private void adminNotice(Member mb) {
-		// TODO Auto-generated method stub
 
 	}
 
 	private void adminHistory(Member mb) {
-		// TODO Auto-generated method stub
 
 	}
 

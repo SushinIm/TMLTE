@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ReserveController {
-	private ModelAndView mav;   //�슂泥�, ���옣 �걹�궃�썑 �궗�씪�졇�꽌 
+	private ModelAndView mav;   
 
 
 	@RequestMapping(value = "/airInternals", method = RequestMethod.GET)
@@ -53,10 +53,10 @@ public class ReserveController {
 	}
 
 
-	@RequestMapping(value = "/ticketOverseas", method = RequestMethod.GET)
+	@RequestMapping(value = "/ticketBuying", method = RequestMethod.GET)
 	public ModelAndView buyTicket() {
 		mav = new ModelAndView();
-		mav.setViewName("overseasticket");
+		mav.setViewName("");
 		return mav;
 	}  
 

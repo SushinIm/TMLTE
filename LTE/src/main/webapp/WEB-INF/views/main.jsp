@@ -36,10 +36,6 @@
 			<input type="text" id="searchtext"/><a href="#imagesearch_layer" onclick="searchview()"></a>
 		</div>
 		
-		<input type="hidden" value="판매자" name="m_part"/>
-		<form name="mypageForm" method="get">
-			<input type="button" value="판매자마이페이지" onclick="mypage(this)">
-		</form>
 	</div>
 	<div id="menu">
 		<ul class="horizonul">
@@ -112,5 +108,5 @@
 	<div id="bg_layer"></div>
 	<div id="contents_layer"></div>
 </div>
->>>>>>> 297a10546dd898983e023d9c53438c8486fdc139
+
 </html>

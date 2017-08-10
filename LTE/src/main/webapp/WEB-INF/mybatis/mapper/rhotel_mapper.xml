@@ -5,6 +5,6 @@
 
 <mapper namespace="rhotel">
 	<select id="getHotelReserveList" parameterType="String" resultType="rhotel">
-	   	   SELECT * FROM RH WHERE M_ID=#{id} 
+	   	   SELECT * FROM RH WHERE RH_HTMID=#{id} 
 	</select>
 </mapper>

@@ -10,8 +10,8 @@
 <h1>판매자 마이페이지</h1>
 
 <h3>판매자 상품 리스트</h3>
-<div>{sellerList}</div>
-<a>판매자 상품 구매자 회원 리스트</a>
-<div>{memberList}</div>
+<div>${sellerList}</div>
+<h3>판매자 상품 구매자 회원 리스트</h3>
+<div>${memberList}</div>
 </body>
 </html>

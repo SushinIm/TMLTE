@@ -59,6 +59,7 @@ public class SellerManagement {
 			memberhtml = rtList_html(rtList);
 		}
 		mav.addObject("sellerList", sellerhtml);
+		mav.addObject("memberList", memberhtml);
 		mav.setViewName("sellerpage");
 	}
 	

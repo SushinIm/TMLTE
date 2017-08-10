@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pticket_mapper.xml : 회원관련 쿼리문 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pticket">
+	<select id="getTicketProdList" parameterType="String" resultType="pticket">
+	   	   SELECT * FROM T WHERE M_ID=#{id} 
+	</select>
+</mapper>

@@ -55,7 +55,7 @@ public class AdminManagement {
 		StringBuilder sb=new StringBuilder();
 		
 		for(int i = 0;i<mlist.size();i++){
-			sb.append("<tr><td>m_bnum</td><td></td></tr>");
+			sb.append("<tr><td>m_bnum</td><td>m_part</td><td>m_name</td><td>m_phone</td></tr>");
 		}
 		mav.addObject("mlist", mlist);
 	

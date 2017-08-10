@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.TM.LTE.bean.ProdHotel;
 import com.TM.LTE.bean.ProdTicket;
+import com.TM.LTE.bean.ReserveHotel;
+import com.TM.LTE.bean.ReserveTicket;
 import com.TM.LTE.dao.SellerDao;
 
 @Service
@@ -41,16 +43,57 @@ public class SellerManagement {
 		mav = new ModelAndView();
 		List<ProdHotel> hList = null;
 		List<ProdTicket> tList = null;
+		List<ReserveHotel> rhList = null;
+		List<ReserveTicket> rtList = null;
 		String sellerhtml = null;
+		String memberhtml = null;
 		if(part.equals("숙박")){
 			hList = sDao.getHotelProdList(id);
+			rhList = sDao.getHotelReserveList(id);
 			sellerhtml = hlist_html(hList);
+			memberhtml = rhList_html(rhList);
 		}else{
 			tList = sDao.getTicketProdList(id);
+			rtList = sDao.getTicketReserveList(id);
 			sellerhtml = tlist_html(tList);
+			memberhtml = rtList_html(rtList);
 		}
 		mav.addObject("sellerList", sellerhtml);
 		mav.setViewName("sellerpage");
+	}
+	
+	private String rhList_html(List<ReserveHotel> rhList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table><tr><td>호텔명(한글)</td><td>호텔명(영어)</td><td>국가명</td><td>도시명</td><td>연락처</td><td>주소</td></tr>");
+		for(int i=0; i<rhList.size(); i++){
+			ReserveHotel rh = rhList.get(i);
+			sb.append("<tr><td>"+rh.getRh_num()+"</td>");
+			sb.append("<td>"+rh.getRh_mid()+"</td>");
+			sb.append("<td>"+rh.getRh_checkin()+"</td>");
+			sb.append("<td>"+rh.getRh_checkout()+"</td>");
+			sb.append("<td>"+rh.getRh_htkrname()+"</td>");
+			sb.append("<td>"+rh.getRh_htrname()+"</td>");
+			sb.append("<td>"+rh.getRh_state()+"</td></tr>");
+		}
+		sb.append("</table>");
+		return sb.toString();
+	}
+
+	private String rtList_html(List<ReserveTicket> rtList) {
+		StringBuilder sb=new StringBuilder();
+		sb.append("<table><tr><td>예약번호</td><td>상품번호</td><td>회원아이디</td><td>구매수량</td><td>예약/구매 날짜</td><td>총금액</td><td>사용가능여부</td></tr>");
+		for(int i=0; i<rtList.size(); i++){
+			ReserveTicket rt = rtList.get(i);
+			sb.append("<tr><td>"+rt.getRt_num()+"</td>");
+			sb.append("<td>"+rt.getRt_tnum()+"</td>");
+			sb.append("<td>"+rt.getRt_mnid()+"</td>");
+			sb.append("<td>"+rt.getRt_qty()+"</td>");
+			sb.append("<td>"+rt.getRt_date()+"</td>");
+			sb.append("<td>"+rt.getRt_total_price()+"</td>");
+			sb.append("<td>"+rt.getRt_use()+"</td></tr>");
+		}
+		sb.append("</table>");
+		return sb.toString();
 	}
 	
 	private String hlist_html(List<ProdHotel> hList) {

@@ -1,5 +1,6 @@
 package com.TM.LTE;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,8 +12,9 @@ import com.TM.LTE.service.AdminManagement;
 @Controller
 //@SessionAttributes("member")
 public class AdminComtroller {
-	
+	@Autowired
 	private AdminManagement am; //admin리스트출력 클래스
+	
 	private ModelAndView mav;
 	
 	@RequestMapping(value = "/adminSeller", method = RequestMethod.GET)

@@ -63,8 +63,6 @@
 	
 	
 	</div>
-	
->>>>>>> 297a10546dd898983e023d9c53438c8486fdc139
 </body>
 <script>
 	function mypage(elem){	//파일 element받음
@@ -74,9 +72,7 @@
 		frm.submit();
 	//}
 	}//function End
-<<<<<<< HEAD
-</script>
-=======
+
 	
 	function searchview(){
 		$('#imagesearch_layer').addClass('open');

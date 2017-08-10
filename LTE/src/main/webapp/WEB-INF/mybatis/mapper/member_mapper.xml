@@ -10,7 +10,7 @@
 4.resultType도 1개만 올 수 있는데 selectType인 경우 List로 반환된다.
  -->
 
-<mapper namespace="Member">
+<mapper namespace="member">
 <!--    <insert id="memberInsert" parameterType="member">
        INSERT INTO M VALUES(#{m_id},#{m_pwd},#{m_name},#{m_birth},#{m_addr},#{m_phone},default)
    </insert>

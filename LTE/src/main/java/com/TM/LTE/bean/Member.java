@@ -4,7 +4,7 @@ public class Member {
 	private String m_id;
 	private String m_pw;
 	private int m_birth;
-	private int blacklist;
+	private int m_blacklist;
 	private String m_email;
 	private String m_phone;
 	private String m_name;
@@ -31,10 +31,10 @@ public class Member {
 		this.m_birth = m_birth;
 	}
 	public int getBlacklist() {
-		return blacklist;
+		return m_blacklist;
 	}
 	public void setBlacklist(int blacklist) {
-		this.blacklist = blacklist;
+		this.m_blacklist = blacklist;
 	}
 	public String getM_email() {
 		return m_email;

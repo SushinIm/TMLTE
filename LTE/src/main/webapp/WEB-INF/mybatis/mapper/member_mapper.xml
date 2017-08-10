@@ -11,6 +11,10 @@
  -->
 
 <mapper namespace="Member">
+	<select id="adminSeller" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
+		SELECT * FROM M
+	</select>
+
 <!--    <insert id="memberInsert" parameterType="member">
        INSERT INTO M VALUES(#{m_id},#{m_pwd},#{m_name},#{m_birth},#{m_addr},#{m_phone},default)
    </insert>

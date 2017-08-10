@@ -1,10 +1,11 @@
 package com.TM.LTE.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+@Service
 public class SearchManagement {
-	@Autowired
+	
 	private ModelAndView mav;
 
 	public ModelAndView execute(int code) {

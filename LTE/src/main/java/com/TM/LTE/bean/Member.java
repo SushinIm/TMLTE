@@ -8,9 +8,9 @@ public class Member {
 	private String m_email;
 	private String m_phone;
 	private String m_name;
-	private String m_bnum;
-	private String m_gender;
-	private String m_part;
+	private String m_bnum; //사업자번호
+	private String m_gender; //성별
+	private String m_part;  //구분
 	
 	public String getM_id() {
 		return m_id;

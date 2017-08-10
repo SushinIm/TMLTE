@@ -12,7 +12,7 @@ import com.TM.LTE.dao.MemberDao;
 @Service
 public class AdminManagement {
 	@Autowired
-	private Member mDao;
+	private MemberDao mDao;
 	@Autowired
 	private HttpSession session;
 

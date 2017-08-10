@@ -90,7 +90,6 @@ public class SellerManagement {
 			sb.append("<td>"+rt.getRt_qty()+"</td>");
 			sb.append("<td>"+rt.getRt_date()+"</td>");
 			sb.append("<td>"+rt.getRt_total_price()+"</td>");
-			sb.append("<td>"+rt.getRt_use()+"</td></tr>");
 		}
 		sb.append("</table>");
 		return sb.toString();

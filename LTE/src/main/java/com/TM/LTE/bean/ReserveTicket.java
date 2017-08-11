@@ -16,8 +16,8 @@ public class ReserveTicket {
 	public String getRt_tnum() {
 		return rt_tnum;
 	}
-	public void setRt_tnum(String string) {
-		this.rt_tnum = string;
+	public void setRt_tnum(String rt_tnum) {
+		this.rt_tnum = rt_tnum;
 	}
 	public String getRt_mnid() {
 		return rt_mnid;

@@ -1,12 +1,10 @@
 package com.TM.LTE;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.TM.LTE.service.ReserveManagement;
@@ -65,12 +63,6 @@ public class ReserveController {
 	public ModelAndView buyTicket() {
 		mav = new ModelAndView();
 		mav = rm.execute(7);
-		return mav;
-	}  
-	
-	@RequestMapping(value = "/payTicket", method = RequestMethod.GET)
-	public ModelAndView payTicket() {
-		mav = rm.execute(8);
 		return mav;
 	}  
 	

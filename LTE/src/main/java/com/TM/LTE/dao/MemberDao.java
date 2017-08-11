@@ -11,7 +11,7 @@ import com.TM.LTE.bean.Member;
 @Repository
 public class MemberDao {
 	@Autowired
-	private static SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
 	public List<Member> adminSeller() {
 		return sqlSession.selectList("member.adminSeller");

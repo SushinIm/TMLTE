@@ -18,5 +18,7 @@
 		<!-- <typeAlias alias="rair" type="com.TM.LTE.bean.ReserveAir"/>   -->
 		<typeAlias alias="rhotel" type="com.TM.LTE.bean.ReserveHotel"/> 
 		<typeAlias alias="rticket" type="com.TM.LTE.bean.ReserveTicket"/> 
+		<typeAlias alias="image" type="com.TM.LTE.bean.Image"/> 
+		<typeAlias alias="search" type="com.TM.LTE.bean.SearchImage"/> 
 	</typeAliases>	
 </configuration>

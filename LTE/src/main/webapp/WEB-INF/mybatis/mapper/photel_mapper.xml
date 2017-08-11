@@ -10,4 +10,9 @@
 	<select id="getHotelProdList" parameterType="String" resultType="photel">
 	   	   SELECT * FROM HT WHERE HT_MID=#{id} 
 	</select>
+	<update id="BestUpdateH" parameterType="String">
+		UPDATE HT
+		SET HT_BEST = 1
+		WHERE HT_MID = #{ht_mid}
+	</update>
 </mapper>

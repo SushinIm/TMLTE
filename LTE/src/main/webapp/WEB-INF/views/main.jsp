@@ -25,6 +25,7 @@
 	
 	<input type="hidden" value="판매자" name="m_part"/>
 	<form name="mypageForm" method="get">
+		<input type="hidden" value="1" name="testvalue"/>
 		<input type="button" value="판매자마이페이지" onclick="mypage(this)">
 	</form>
 =======

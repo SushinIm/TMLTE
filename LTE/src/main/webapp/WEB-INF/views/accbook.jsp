@@ -8,13 +8,13 @@
 </head>
 <body>
 <!-- 숙박상품 -->
-<form name="Prodpage" action="insertProdFrm">
+<!-- <form name="prodpage" action="insertProdFrm">
 <input id="sellerProd" type="button" value="상품등록" onclick="insertProd()">
-</form>
+</form> -->
 </body>
 <script>
 function insertProd(){
-	document.Prodpage.submit();
+	document.prodpage.submit();
 }
 </script>
 </html>

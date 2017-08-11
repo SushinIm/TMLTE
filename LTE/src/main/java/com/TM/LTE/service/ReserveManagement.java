@@ -5,11 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.TM.LTE.bean.ReserveTicket;
 import com.TM.LTE.dao.ReserveDao;
-
+@Service
 public class ReserveManagement {
 	private ModelAndView mav;
 	@Autowired
@@ -58,7 +59,7 @@ public class ReserveManagement {
 		rt.setRt_total_price(adultP+childP);
 		rt.setRt_tnum(req.getParameter("prodnum"));
 		rt.setRt_state("구매 완료");
-		rDao.insertPayTicket(rt);
+		//rDao.insertPayTicket(rt);
 		payTicket(adultc, childc, rt);
 	}
 	

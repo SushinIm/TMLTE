@@ -14,11 +14,11 @@ public class MemberDao {
 	private SqlSessionTemplate sqlSession;
 	
 	public List<Member> adminSeller() {
-		return sqlSession.selectList("Member.adminSeller");
+		return sqlSession.selectList("member.adminSeller");
 	}
 	
-	public Member getMemberInfo(String id) {
+	/*public Member getMemberInfo(String id) {
 		return sqlSession.selectOne("member.getMemberInfo",id);	
-	}
+	}*/
 	
 }

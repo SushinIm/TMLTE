@@ -7,10 +7,10 @@ public class Member {
 	private int m_blacklist;
 	private String m_email;
 	private String m_phone;
-	private String m_name;
-	private String m_bnum;
-	private String m_gender;
-	private String m_part;
+	private String m_name;  //이름or상호명
+	private String m_bnum; //사업자번호or회원번호
+	private String m_gender; //성별
+	private String m_part;  //구분
 	
 	public String getM_id() {
 		return m_id;

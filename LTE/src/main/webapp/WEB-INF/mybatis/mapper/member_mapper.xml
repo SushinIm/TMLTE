@@ -10,8 +10,16 @@
 4.resultType도 1개만 올 수 있는데 selectType인 경우 List로 반환된다.
  -->
 
+
 <mapper namespace="member">
-<!--    <insert id="memberInsert" parameterType="member">
+	<select id="adminSeller" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
+		SELECT * FROM M
+	</select>
+</mapper>
+
+<!-- <mapper namespace="member">
+
+   <insert id="memberInsert" parameterType="member">
        INSERT INTO M VALUES(#{m_id},#{m_pwd},#{m_name},#{m_birth},#{m_addr},#{m_phone},default)
    </insert>
    <select id="getLoginResult" parameterType="member" resultType="Integer">
@@ -26,5 +34,5 @@
    </select>
    <select id="hashMapTest" parameterType="HashMap" resultType="Integer">
        SELECT COUNT(*) FROM M WHERE M_ID=#{id} AND M_PWD=#{pw}
-   </select> -->
-</mapper>
+   </select>
+</mapper> -->

@@ -58,11 +58,17 @@ public class ReserveController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/hotelBooking", method = RequestMethod.GET)
+	public ModelAndView reserveHotel() {
+		mav = new ModelAndView();
+		mav = rm.execute(8);
+		return mav;
+	}  
 
 	@RequestMapping(value = "/ticketBuying", method = RequestMethod.GET)
 	public ModelAndView buyTicket() {
 		mav = new ModelAndView();
-		mav = rm.execute(7);
+		mav = rm.execute(9);
 		return mav;
 	}  
 	

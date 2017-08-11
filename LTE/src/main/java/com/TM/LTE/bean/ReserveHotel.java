@@ -1,5 +1,6 @@
 package com.TM.LTE.bean;
 
+
 public class ReserveHotel {
 	private int rh_num;
 	private String rh_hmid;

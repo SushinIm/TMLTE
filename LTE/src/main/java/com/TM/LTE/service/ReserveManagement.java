@@ -5,11 +5,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.TM.LTE.bean.ReserveHotel;
 import com.TM.LTE.bean.ReserveTicket;
 import com.TM.LTE.dao.ReserveDao;
-
+@Service
 public class ReserveManagement {
 	private ModelAndView mav;
 	@Autowired
@@ -34,12 +36,21 @@ public class ReserveManagement {
 		case 6:
 			break;
 		case 7:
+			break;
+		case 8:
+			reserveHotel();
+			break;
+		case 9:
 			buyTicket();
 			break;
 		default:
 			break;
 		}
 		return mav;
+	}
+
+	private void reserveHotel() {
+		ReserveHotel rh = new ReserveHotel();
 	}
 
 	private void buyTicket() {
@@ -58,7 +69,7 @@ public class ReserveManagement {
 		rt.setRt_total_price(adultP+childP);
 		rt.setRt_tnum(req.getParameter("prodnum"));
 		rt.setRt_state("구매 완료");
-		rDao.insertPayTicket(rt);
+		//rDao.insertPayTicket(rt);
 		payTicket(adultc, childc, rt);
 	}
 	

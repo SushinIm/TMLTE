@@ -11,7 +11,6 @@
  -->
 
 <mapper namespace="Image"> 
-	<select id="imageselect" resultType="Image" parameterType="Integer">
-   		SELECT BF_SYSNAME FROM BF
-   </select>
+
+
 </mapper>

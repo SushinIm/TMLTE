@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.TM.LTE.bean.ProdHotel;
 import com.TM.LTE.bean.ProdTicket;
+import com.TM.LTE.bean.ReserveHotel;
+import com.TM.LTE.bean.ReserveTicket;
 @Repository
 public class SellerDao {
 	@Autowired
@@ -25,5 +27,23 @@ public class SellerDao {
 		return sqlSession.selectList("pticket.get-getTicketProdList", id);
 	}
 
-	
+	public List<ReserveHotel> getHotelReserveList(String id) {
+		return sqlSession.selectList("rhotel.getHotelReserveList", id);
+	}
+
+	public List<ReserveTicket> getTicketReserveList(int prod) {
+		return sqlSession.selectList("rticket.getTicketReserveList", prod);
+	}
+
+	public int selectProd(String id) {
+		return sqlSession.selectOne("pticket.selectProd", id);
+	}
+
+	public int BestUpdateH(String ht_mid) {
+		return sqlSession.update("photel.BestUpdateH", ht_mid);
+	}
+
+	public int BestUpdateT(int t_num) {
+		return sqlSession.update("pticket.BestUpdateT", t_num);
+	}
 }

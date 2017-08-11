@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pticket_mapper.xml : 회원관련 쿼리문 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pticket">
+	<select id="getTicketProdList" parameterType="String" resultType="pticket">
+	   	   SELECT * FROM T WHERE T_MID=#{id} 
+	</select>
+	<select id="selectProd" parameterType="String" resultType="Integer">
+	   	   SELECT T_NUM FROM T WHERE T_MID=#{id} 
+	</select>
+	<update id="BestUpdateT" parameterType="Integer">
+		UPDATE T
+		SET T_BEST = 1
+		WHERE T_NUM = #{t_num}
+	</update>
+</mapper>

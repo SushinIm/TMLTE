@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- photel_mapper.xml : 회원관련 쿼리문 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="photel">
+	<select id="selectPart" parameterType="String" resultType="String">
+	   	   SELECT M_PART FROM M WHERE M_ID=#{id} 
+	</select>
+	<select id="getHotelProdList" parameterType="String" resultType="photel">
+	   	   SELECT * FROM HT WHERE HT_MID=#{id} 
+	</select>
+	<update id="BestUpdateH" parameterType="String">
+		UPDATE HT
+		SET HT_BEST = 1
+		WHERE HT_MID = #{ht_mid}
+	</update>
+</mapper>

@@ -12,8 +12,7 @@ import com.TM.LTE.userClass.Histogram;
 import com.TM.LTE.userClass.UploadFile;
 import com.TM.LTE.dao.SearchDao;
 
-@Service()
-
+@Service
 public class SearchManagement {
 	
 	private ModelAndView mav;

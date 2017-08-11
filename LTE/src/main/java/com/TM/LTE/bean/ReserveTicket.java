@@ -6,7 +6,9 @@ public class ReserveTicket {
 	private String rt_mnid;
 	private int rt_qty;
 	private String rt_date;
-	private int rt_total_price; 
+	private int rt_total_price;
+	private String rt_state;
+	
 	public int getRt_num() {
 		return rt_num;
 	}
@@ -42,5 +44,11 @@ public class ReserveTicket {
 	}
 	public void setRt_total_price(int rt_total_price) {
 		this.rt_total_price = rt_total_price;
+	}
+	public String getRt_state() {
+		return rt_state;
+	}
+	public void setRt_state(String rt_state) {
+		this.rt_state = rt_state;
 	} 
 }

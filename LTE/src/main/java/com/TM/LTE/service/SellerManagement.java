@@ -26,19 +26,46 @@ public class SellerManagement {
 	@Autowired
 	private SellerDao sDao;
 	
+	
+	
 	public ModelAndView execute(int i) {
 		switch(i){
 		case 1:
 			getSellerList(); break;
+		case 2:
+			getBestProdUpdate(); break;
 		}
 		return mav;
 	}
 
+	private void getBestProdUpdate() {
+		String part = req.getParameter("part");
+		String ht_mid = req.getParameter("ht_mid");
+		int t_num = Integer.valueOf(req.getParameter("t_num"));
+		int result = 0;
+		System.out.println(ht_mid);
+		System.out.println(t_num);
+		if(part.equals("숙박")){
+			result = sDao.BestUpdateH(ht_mid);
+		}else{
+			result = sDao.BestUpdateT(t_num);
+		}
+		if(result == 0){
+			System.out.println("수정실패");
+		}else{
+			System.out.println("수정성공");
+		}
+	}
+
 	private void getSellerList() {
+		//String val = req.getParameter("testvalue");	
+		//System.out.println(val);
 		//String id = session.getAttribute("id").toString();
-		String part = "숙박";//sDao.selectPart(id);
-		System.out.println(part);
 		String id = "AAA";
+		String part = "숙박";//sDao.selectPart(id);
+		int prod  = sDao.selectProd(id);
+		System.out.println(part);
+		
 		System.out.println(id);
 		mav = new ModelAndView();
 		List<ProdHotel> hList = null;
@@ -54,17 +81,19 @@ public class SellerManagement {
 			memberhtml = rhList_html(rhList);
 		}else{
 			tList = sDao.getTicketProdList(id);
-			rtList = sDao.getTicketReserveList(id);
+			rtList = sDao.getTicketReserveList(prod);
 			sellerhtml = tlist_html(tList);
 			memberhtml = rtList_html(rtList);
 		}
 		mav.addObject("sellerList", sellerhtml);
+		mav.addObject("memberList", memberhtml);
+		mav.addObject("part", part);
 		mav.setViewName("sellerpage");
 	}
 	
 	private String rhList_html(List<ReserveHotel> rhList) {
 		StringBuilder sb=new StringBuilder();
-		sb.append("<table><tr><td>호텔명(한글)</td><td>호텔명(영어)</td><td>국가명</td><td>도시명</td><td>연락처</td><td>주소</td></tr>");
+		sb.append("<table><tr><td>호텔명(한글)</td><td>호텔명(영어)</td><td>국가명</td><td>도시명</td><td>연락처</td><td>주소</td><td>구분</td></tr>");
 		for(int i=0; i<rhList.size(); i++){
 			ReserveHotel rh = rhList.get(i);
 			sb.append("<tr><td>"+rh.getRh_num()+"</td>");
@@ -105,7 +134,8 @@ public class SellerManagement {
 			sb.append("<td>"+h.getHt_nation()+"</td>");
 			sb.append("<td>"+h.getHt_city()+"</td>");
 			sb.append("<td>"+h.getHt_msphone()+"</td>");
-			sb.append("<td>"+h.getHt_addr()+"</td></tr>");
+			sb.append("<td>"+h.getHt_addr()+"</td>");
+			sb.append("<td><a href='/bestProd?ht_mid="+ h.getHt_mid() +"'><input type='button' value='추천호텔등록'/></a></td></tr>");
 		}
 		sb.append("</table>");
 		return sb.toString();
@@ -123,7 +153,8 @@ public class SellerManagement {
 			sb.append("<td>"+t.getT_aprice()+"</td>");
 			sb.append("<td>"+t.getT_cprice()+"</td>");
 			sb.append("<td>"+t.getT_start_date()+" ~ "+t.getT_end_date()+"</td>");
-			sb.append("<td>"+t.getT_stock()+"</td></tr>");
+			sb.append("<td>"+t.getT_stock()+"</td>");
+			sb.append("<td><a href='/bestProd?t_num="+ t.getT_num() + "'><input type='button' value='인기상품등록'/></a></td></tr>");
 		}
 		sb.append("</table>");
 		return sb.toString();

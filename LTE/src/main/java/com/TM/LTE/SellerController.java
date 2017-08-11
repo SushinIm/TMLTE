@@ -24,4 +24,12 @@ public class SellerController {
 		//mav.setViewName("sellerpage");//.jsp
 		return mav;
 	}
+	@RequestMapping(value = "/bestProd", method = RequestMethod.GET)
+	public ModelAndView bestProd() {
+		System.out.println("bestProd");
+		mav=new ModelAndView();
+		mav = sm.execute(2);
+		//mav.setViewName("sellerpage");//.jsp
+		return mav;
+	}
 }

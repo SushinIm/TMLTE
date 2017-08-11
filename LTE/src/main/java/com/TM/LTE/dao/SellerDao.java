@@ -31,9 +31,19 @@ public class SellerDao {
 		return sqlSession.selectList("rhotel.getHotelReserveList", id);
 	}
 
-	public List<ReserveTicket> getTicketReserveList(String id) {
-		return sqlSession.selectList("rticket.getTicketReserveList", id);
+	public List<ReserveTicket> getTicketReserveList(int prod) {
+		return sqlSession.selectList("rticket.getTicketReserveList", prod);
 	}
 
-	
+	public int selectProd(String id) {
+		return sqlSession.selectOne("pticket.selectProd", id);
+	}
+
+	public int BestUpdateH(String ht_mid) {
+		return sqlSession.update("photel.BestUpdateH", ht_mid);
+	}
+
+	public int BestUpdateT(int t_num) {
+		return sqlSession.update("pticket.BestUpdateT", t_num);
+	}
 }

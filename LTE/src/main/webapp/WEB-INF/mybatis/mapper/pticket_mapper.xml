@@ -5,6 +5,14 @@
 
 <mapper namespace="pticket">
 	<select id="getTicketProdList" parameterType="String" resultType="pticket">
-	   	   SELECT * FROM T WHERE M_ID=#{id} 
+	   	   SELECT * FROM T WHERE T_MID=#{id} 
 	</select>
+	<select id="selectProd" parameterType="String" resultType="Integer">
+	   	   SELECT T_NUM FROM T WHERE T_MID=#{id} 
+	</select>
+	<update id="BestUpdateT" parameterType="Integer">
+		UPDATE T
+		SET T_BEST = 1
+		WHERE T_NUM = #{t_num}
+	</update>
 </mapper>

@@ -57,6 +57,7 @@ public class ReserveManagement {
 		int childP = childc * Integer.parseInt(req.getParameter("childP"));
 		rt.setRt_total_price(adultP+childP);
 		rt.setRt_tnum(req.getParameter("prodnum"));
+		rt.setRt_state("구매 완료");
 		rDao.insertPayTicket(rt);
 		payTicket(adultc, childc, rt);
 	}

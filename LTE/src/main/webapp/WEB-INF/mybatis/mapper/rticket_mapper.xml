@@ -14,6 +14,6 @@
    		SELECT MAX(RT_NUM) FROM RT
 	</select>
 	<insert id="insertPayTicket" parameterType="ReserveTicket">
-		INSERT INTO RT VALUES(#{rt_num}, #{rt_tnum}, #{rt_mnid}, #{rt_qty}, default, #{rt_total_price)
+		INSERT INTO RT VALUES(#{rt_num}, #{rt_tnum}, #{rt_mnid}, #{rt_qty}, default, #{rt_total_price}, default)
 	</insert>
 </mapper>

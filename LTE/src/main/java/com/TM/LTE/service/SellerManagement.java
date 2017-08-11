@@ -62,9 +62,11 @@ public class SellerManagement {
 		//System.out.println(val);
 		//String id = session.getAttribute("id").toString();
 		String id = "AAA";
+		System.out.println(id);
 		String part = "숙박";//sDao.selectPart(id);
-		int prod  = sDao.selectProd(id);
 		System.out.println(part);
+		int prod  = sDao.selectProd(id);
+		System.out.println(prod);
 		
 		System.out.println(id);
 		mav = new ModelAndView();

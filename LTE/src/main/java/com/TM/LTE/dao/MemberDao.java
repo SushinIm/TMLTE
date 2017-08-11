@@ -12,12 +12,13 @@ import com.TM.LTE.bean.Member;
 public class MemberDao {
 	@Autowired
 	private static SqlSessionTemplate sqlSession;
+	
 	public List<Member> adminSeller() {
-		return sqlSession.selectList("Member.adminSeller");
+		return sqlSession.selectList("member.adminSeller");
 	}
 	
-	public Member getMemberInfo(String id) {
+	/*public Member getMemberInfo(String id) {
 		return sqlSession.selectOne("member.getMemberInfo",id);	
-	}
+	}*/
 	
 }

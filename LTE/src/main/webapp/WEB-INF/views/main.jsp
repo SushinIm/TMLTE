@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LTE 여행사 메인 페이지</title>
+<script src="resources/js/jquery-3.2.1.min.js"></script>
 <style>
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 	<ul class="horizonul">
 		<li>
 			<span>국내</span>
@@ -28,7 +28,6 @@
 		<input type="hidden" value="1" name="testvalue"/>
 		<input type="button" value="판매자마이페이지" onclick="mypage(this)">
 	</form>
-=======
 	<div id="header">
 		<div id="home">
 			<a href="main.jsp"><img src="homeimage"/></a>
@@ -57,11 +56,17 @@
 	
 	</div>
 	<div id="footer">
-	
+	<form name="prodForm">
+<input id="sellerProd" type="button" value="상품등록" onclick="insertProd()">
+</form>
 	
 	</div>
 </body>
 <script>
+function insertProd(){
+	document.prodForm.action="insertProdFrm";
+	document.prodForm.submit();
+}
 	function mypage(elem){	//파일 element받음
 		var frm = document.mypageForm;
 	//if('${m_part}' == "판매자"){

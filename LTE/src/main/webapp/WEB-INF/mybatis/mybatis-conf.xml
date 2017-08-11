@@ -10,9 +10,10 @@
 	</settings> 
 	<typeAliases> <!-- 사용할 빈을 Alias로 등록하여 사용 -->
 		<typeAlias alias="member" type="com.TM.LTE.bean.Member"/> 
-		<typeAlias alias="hotel" type="com.TM.LTE.bean.HotelProduct"/> 
-		<typeAlias alias="air" type="com.TM.LTE.bean.AirProduct"/> 
+	<!--<typeAlias alias="hotel" type="com.TM.LTE.bean.HotelProduct"/> -->		
+	<!--<typeAlias alias="air" type="com.TM.LTE.bean.AirProduct"/> --> 
 		<typeAlias alias="passenger" type="com.TM.LTE.bean.Passenger"/> 
 		<typeAlias alias="image" type="com.TM.LTE.bean.Image"/> 
+		<typeAlias alias="search" type="com.TM.LTE.bean.SearchImage"/> 
 	</typeAliases>	
 </configuration>

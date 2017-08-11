@@ -10,6 +10,8 @@
 4.resultType도 1개만 올 수 있는데 selectType인 경우 List로 반환된다.
  -->
 
-<mapper namespace="Board"> 
-
+<mapper namespace="Image"> 
+	<select id="imageselect" resultType="Image" parameterType="Integer">
+   		SELECT BF_SYSNAME FROM BF
+   </select>
 </mapper>

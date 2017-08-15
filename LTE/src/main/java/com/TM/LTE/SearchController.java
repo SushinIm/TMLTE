@@ -15,13 +15,13 @@ public class SearchController {
 	@Autowired
 	private SearchManagement sm;
 	
-	/*@RequestMapping(value = "/contents")
+	@RequestMapping(value = "/contents")
 	   public ModelAndView contents() {
 		  System.out.println("asdf");
 	      mav = new ModelAndView();
 	      mav = sm.execute(1);
 	      return mav;
-	   }*/
+	   }
 	
 	@RequestMapping(value = "/imagesearch")
 	public ModelAndView imagesearch(MultipartHttpServletRequest multi) {

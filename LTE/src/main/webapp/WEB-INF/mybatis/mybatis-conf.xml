@@ -20,5 +20,6 @@
 		<typeAlias alias="rticket" type="com.TM.LTE.bean.ReserveTicket"/> 
 		<typeAlias alias="image" type="com.TM.LTE.bean.Image"/> 
 		<typeAlias alias="search" type="com.TM.LTE.bean.SearchImage"/> 
+		<typeAlias alias="rview" type="com.TM.LTE.bean.RoomView"/>
 	</typeAliases>	
 </configuration>

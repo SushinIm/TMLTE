@@ -152,7 +152,6 @@ public class SellerManagement {
 			sb.append("<td>"+t.getT_name()+"</td>");
 			sb.append("<td>"+t.getT_aprice()+"</td>");
 			sb.append("<td>"+t.getT_cprice()+"</td>");
-			sb.append("<td>"+t.getT_start_date()+" ~ "+t.getT_end_date()+"</td>");
 			sb.append("<td>"+t.getT_stock()+"</td>");
 			sb.append("<td><a href='/bestProd?t_num="+ t.getT_num() + "'><input type='button' value='인기상품등록'/></a></td></tr>");
 		}

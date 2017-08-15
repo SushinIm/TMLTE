@@ -59,6 +59,13 @@ public class ReserveController {
 	}
 
 	@RequestMapping(value = "/hotelBooking", method = RequestMethod.GET)
+	public ModelAndView checkRoom() {
+		mav = new ModelAndView();
+		mav = rm.execute(7);
+		return mav;
+	}  
+
+	@RequestMapping(value = "/hotelReserve", method = RequestMethod.GET)
 	public ModelAndView reserveHotel() {
 		mav = new ModelAndView();
 		mav = rm.execute(8);

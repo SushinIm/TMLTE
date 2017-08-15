@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+=======
+import org.springframework.http.HttpRequest;
+>>>>>>> 5c1e419fed37db59aa4ed7d87b59cf5af8460c0a
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 

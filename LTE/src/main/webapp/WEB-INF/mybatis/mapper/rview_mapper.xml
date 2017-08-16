@@ -4,7 +4,4 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="rview">
-	<select id="checkLeftRoom" parameterType="RoomView">
-		SELECT HTR_NAME, HTR_PNUM, HTR_PRICE FROM RVIEW WHERE HT_KRNAME = #{ht_krname}
-	</select>
 </mapper>

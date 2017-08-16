@@ -9,6 +9,30 @@ public class ProdHotel {
 	private String ht_msphone;
 	private String ht_addr;
 	private int ht_best;
+	//========객실 bean
+	private int htr_rnum;
+	private String htr_name;
+	private String htr_price;
+	private int htr_pnum;
+	
+	public int getHtr_rnum() {
+		return htr_rnum;
+	}
+	public void setHtr_rnum(int htr_rnum) {
+		this.htr_rnum = htr_rnum;
+	}
+	public String getHtr_name() {
+		return htr_name;
+	}
+	public void setHtr_name(String htr_name) {
+		this.htr_name = htr_name;
+	}
+	public String getHtr_price() {
+		return htr_price;
+	}
+	public void setHtr_price(String htr_price) {
+		this.htr_price = htr_price;
+	}
 	
 	public String getHt_mid() {
 		return ht_mid;
@@ -57,6 +81,12 @@ public class ProdHotel {
 	}
 	public void setHt_best(int ht_best) {
 		this.ht_best = ht_best;
+	}
+	public int getHtr_pnum() {
+		return htr_pnum;
+	}
+	public void setHtr_pnum(int htr_pnum) {
+		this.htr_pnum = htr_pnum;
 	}
 	
 	

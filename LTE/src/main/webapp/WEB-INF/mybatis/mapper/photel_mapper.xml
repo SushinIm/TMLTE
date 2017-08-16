@@ -15,4 +15,22 @@
 		SET HT_BEST = 1
 		WHERE HT_MID = #{ht_mid}
 	</update>
+	<insert id="insertWrite" parameterType="photel">
+		INSERT INTO HT
+		VALUES(HT_SEQ.NEXTVAL, #{ht_mid}, #{ht_krname}, #{ht_egname}, #{ht_nation}, #{ht_city}, #{ht_msphone}, #{ht_addr}, default)
+	</insert>
+	<select id="hotelNum" parameterType="String" resultType="String">
+	   	   SELECT HT_NUM FROM HT WHERE HT_MID=#{id} 
+	</select>
+	<insert id="fileInsert" parameterType="image">
+		INSERT INTO PI
+		VALUES(#{pi_sysname,jdbcType=VARCHAR}, #{pi_oriname,jdbcType=VARCHAR}, #{pi_num,jdbcType=VARCHAR}, #{pi_path,jdbcType=VARCHAR}, #{pi_detail,jdbcType=VARCHAR})
+	</insert>
+	<select id="selectUpFrm" parameterType="String" resultType="photel">
+	   	   SELECT * FROM HT WHERE HT_NUM=#{hnum}
+	</select>
+	<insert id="insertRoom" parameterType="photel">
+		INSERT INTO HTR
+		VALUES(#{htr_rnum}, #{ht_mid}, #{htr_name}, #{htr_price}, #{htr_pnum})
+	</insert>
 </mapper>

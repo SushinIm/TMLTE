@@ -44,7 +44,7 @@ public class AdminManagement {
 	}
 
 	private void adminSeller(Member mb) {
-		String view=null;
+		/*String view=null;
 		mav=new ModelAndView();
 		List<Member> mlist=null;//<>이름은 bean이름, mlist:멤버리스트
 		
@@ -57,7 +57,7 @@ public class AdminManagement {
 		for(int i = 0;i<mlist.size();i++){
 			sb.append("<tr><td>m_bnum</td><td>m_part</td><td>m_name</td><td>m_phone</td></tr>");
 		}
-		mav.addObject("mlist", mlist);
+		mav.addObject("mlist", mlist);*/
 	
 		
 		

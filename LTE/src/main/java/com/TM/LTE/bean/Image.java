@@ -1,9 +1,10 @@
 package com.TM.LTE.bean;
 
 public class Image {
+	private String pi_oriname;
 	private String pi_sysname;
-	private int pi_part;
-	private int pi_detail;
+	private String pi_path;
+	private String pi_detail;
 	private String pi_num;
 	
 	public String getPi_sysname() {
@@ -12,22 +13,29 @@ public class Image {
 	public void setPi_sysname(String pi_sysname) {
 		this.pi_sysname = pi_sysname;
 	}
-	public int getPi_part() {
-		return pi_part;
-	}
-	public void setPi_part(int pi_part) {
-		this.pi_part = pi_part;
-	}
-	public int getPi_detail() {
-		return pi_detail;
-	}
-	public void setPi_detail(int pi_detail) {
-		this.pi_detail = pi_detail;
-	}
+	
 	public String getPi_num() {
 		return pi_num;
 	}
 	public void setPi_num(String pi_num) {
 		this.pi_num = pi_num;
+	}
+	public String getPi_oriname() {
+		return pi_oriname;
+	}
+	public void setPi_oriname(String pi_oriname) {
+		this.pi_oriname = pi_oriname;
+	}
+	public String getPi_path() {
+		return pi_path;
+	}
+	public void setPi_path(String pi_path) {
+		this.pi_path = pi_path;
+	}
+	public String getPi_detail() {
+		return pi_detail;
+	}
+	public void setPi_detail(String pi_detail) {
+		this.pi_detail = pi_detail;
 	}
 }

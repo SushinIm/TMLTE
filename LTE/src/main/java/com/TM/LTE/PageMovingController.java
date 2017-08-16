@@ -18,7 +18,7 @@ public class PageMovingController {
 	@RequestMapping(value = "/insertProdFrm", method = RequestMethod.GET)
 	public ModelAndView insertProdFrm() {
 		mav = new ModelAndView();
-		mav.setViewName("hotelInsert");
+		mav.setViewName("hotelinsert");
 		return mav;
 	}
 }

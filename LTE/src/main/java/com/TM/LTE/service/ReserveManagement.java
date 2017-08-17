@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.TM.LTE.bean.ProdRoom;
 import com.TM.LTE.bean.ReserveHotel;
 import com.TM.LTE.bean.ReserveTicket;
-import com.TM.LTE.bean.RoomView;
 import com.TM.LTE.dao.ReserveDao;
 @Service
 public class ReserveManagement {
@@ -55,21 +54,24 @@ public class ReserveManagement {
 	}
 
 	private void lookingForRoom() {
-		RoomView rv = new RoomView();
+		ReserveHotel rh = new ReserveHotel();
 		String[] checkIn = req.getParameter("checkIn").split("-");
-		int inDate = Integer.parseInt(checkIn[0]+checkIn[1]+checkIn[2]);
+		String inDate = checkIn[0]+checkIn[1]+checkIn[2];
 		String[] checkOut = req.getParameter("checkOut").split("-");
-		int outDate = Integer.parseInt(checkOut[0]+checkOut[1]+checkOut[2]);
-		rv.setCheckIn(inDate);
-		rv.setCheckOut(outDate);
-		rv.setHtr_pnum(Integer.parseInt(req.getParameter("rooms")));
-		List<ProdRoom> rvList = rDao.checkLeftRoom(rv);
+		String outDate = checkOut[0]+checkOut[1]+checkOut[2];
+		rh.setRh_checkin(inDate);
+		rh.setRh_checkout(outDate);
+		rh.setRh_htkrname(req.getParameter("htkrname"));
+		rh.setHtr_pnum(Integer.parseInt(req.getParameter("rooms")));
+		List<ProdRoom> rvList = rDao.checkLeftRoom(rh);
+		System.out.println(rvList);
 		String lrList = makeLeftRoom(rvList, inDate, outDate);
+		System.out.println(lrList);
 		mav.addObject("lrTable", lrList);
 		mav.setViewName("hoteldetail");
 	}
 
-	private String makeLeftRoom(List<ProdRoom> rvList, int inDate, int outDate) {
+	private String makeLeftRoom(List<ProdRoom> rvList, String inDate, String outDate) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<div>");
 		sb.append("<div><ul><li>객실명</li><li>인원수</li><li>가격</li><li>예약하기</li></ul></div>");
@@ -77,11 +79,11 @@ public class ReserveManagement {
 		{
 			ProdRoom pr = rvList.get(i);
 			sb.append("<div><form action='hotelReserve' method='post'>");
+			sb.append("<ul><li>"+pr.getHtr_rnum()+"<input type='hidden' name='htrrnum' value='"+pr.getHtr_rnum()+"'/>"+"</li>");
 			sb.append("<ul><li>"+pr.getHtr_name()+"<input type='hidden' name='htrname' value='"+pr.getHtr_name()+"'/>"+"</li>");
 			sb.append("<li name=''>"+pr.getHtr_pnum()+"<input type='hidden' name='htrpnum' value='"+pr.getHtr_pnum()+"'/>"+"</li>");
 			sb.append("<li>"+pr.getHtr_price()+"<input type='hidden' name='htrprice' value='"+pr.getHtr_price()+"'/>"+"</li>");
 			sb.append("<input type='hidden' name='htrhtmid' value='"+pr.getHtr_htmid()+"'/>");
-			sb.append("<input type='hidden' name='htrrnum' value='"+pr.getHtr_rnum()+"'/>");
 			sb.append("<input type='hidden' name='inDate' value='"+inDate+"'/>");
 			sb.append("<input type='hidden' name='outDate' value='"+outDate+"'/>");
 			sb.append("<li><input type='submit' value='실시간 예약'/></li></ul>");
@@ -94,11 +96,12 @@ public class ReserveManagement {
 	private void reserveTheRoom() {
 		ReserveHotel rh = new ReserveHotel();
 		rh.setRh_htmid(req.getParameter("htrhtmid"));
+		String htmid = rh.getRh_htmid();
 		rh.setRh_mid(ss.getAttribute("id").toString());
 		rh.setRh_checkin(req.getParameter("inDate"));
 		rh.setRh_checkout(req.getParameter("outDate"));
-		rh.setRh_htkrname(req.getParameter(""));
-		rh.setRh_htegname(req.getParameter(""));
+		rh.setRh_htkrname(rDao.gethtkrname(htmid));
+		rh.setRh_htegname(rDao.gethtegname(htmid));
 		rh.setRh_htrname(req.getParameter("htrname"));
 		rh.setRh_rnum(Integer.parseInt(req.getParameter("htrrnum")));
 		rh.setRh_price(Integer.parseInt(req.getParameter("htrprice")));
@@ -114,9 +117,8 @@ public class ReserveManagement {
 
 	private String makeBookedRoom(String id) {
 		StringBuilder sb = new StringBuilder();
-		List<ReserveHotel> sRoom = rDao.selectedRoom(id);
-		ReserveHotel rh = sRoom.get(0);
-		sb.append("<table><tr><th>객실명</th><th>가격</th><th>체크인</th><th>체크아웃</th>");
+		ReserveHotel rh = rDao.selectedRoom(id);
+		sb.append("<table><tr><th>객실명</th><th>가격</th><th>체크인</th><th>체크아웃</th></tr>");
 		sb.append("<tr><td>"+rh.getRh_htrname()+"</td>");
 		sb.append("<td>"+rh.getRh_price()+"</td>");
 		sb.append("<td>"+rh.getRh_checkin()+"</td>");
@@ -141,7 +143,7 @@ public class ReserveManagement {
 		rt.setRt_total_price(adultP+childP);
 		rt.setRt_tnum(req.getParameter("prodnum"));
 		rt.setRt_state("구매 완료");
-		//rDao.insertPayTicket(rt);
+		rDao.insertPayTicket(rt);
 		payTicket(adultc, childc, rt);
 	}
 	

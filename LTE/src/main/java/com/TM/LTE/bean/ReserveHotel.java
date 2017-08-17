@@ -13,7 +13,7 @@ public class ReserveHotel {
 	private int rh_price;
 	private int rh_rnum;
 	private String rh_state;
-	
+	private int htr_pnum;
 	public int getRh_num() {
 		return rh_num;
 	}
@@ -79,5 +79,11 @@ public class ReserveHotel {
 	}
 	public void setRh_state(String rh_state) {
 		this.rh_state = rh_state;
+	}
+	public int getHtr_pnum() {
+		return htr_pnum;
+	}
+	public void setHtr_pnum(int htr_pnum) {
+		this.htr_pnum = htr_pnum;
 	}
 }

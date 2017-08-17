@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.TM.LTE.bean.ProdRoom;
 import com.TM.LTE.bean.ReserveHotel;
 import com.TM.LTE.bean.ReserveTicket;
-import com.TM.LTE.bean.RoomView;
 @Repository
 public class ReserveDao {
 
@@ -24,19 +23,26 @@ public class ReserveDao {
 		return sqlSession.selectOne("rticket.maxRtnum");
 	}
 
-	public List<ProdRoom> checkLeftRoom(RoomView rv) {
-		return sqlSession.selectList("rhotel.checkLeftRoom", rv);
+	public List<ProdRoom> checkLeftRoom(ReserveHotel rh) {
+		return sqlSession.selectList("rhotel.checkLeftRoom", rh);
 	}
 
 	public int reserveTheRoom(ReserveHotel rh) {
 		return sqlSession.insert("rhotel.reserveTheRoom", rh);
 	}
 
-	public List<ReserveHotel> selectedRoom(String id) {
+	public ReserveHotel selectedRoom(String id) {
 		return sqlSession.selectOne("rhotel.selectedRoom", id);
 	}
-	/*public void insertPayTicket(ReserveTicket rt) {
+	public void insertPayTicket(ReserveTicket rt) {
 		sqlSession.insert("rticket.insertPayTicket", rt);
-	}*/
+	}
 
+	public String gethtkrname(String htmid) {
+		return sqlSession.selectOne("rhotel.gethtkrname",htmid);
+	}
+
+	public String gethtegname(String htmid) {
+		return sqlSession.selectOne("rhotel.gethtegname",htmid);
+	}
 }

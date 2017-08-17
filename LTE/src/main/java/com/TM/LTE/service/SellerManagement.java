@@ -61,11 +61,11 @@ public class SellerManagement {
 			int num = Integer.valueOf(multi.getParameter("r_num"+i));
 			String price = multi.getParameter("r_price"+i);
 			int person = Integer.valueOf(multi.getParameter("r_person"+i));
-			prodhotel.setHt_mid(id);
+			prodhotel.setHt_mid(id);/*
 			prodhotel.setHtr_rnum(num);
 			prodhotel.setHtr_name(name);
 			prodhotel.setHtr_price(price);
-			prodhotel.setHtr_pnum(person);
+			prodhotel.setHtr_pnum(person);*/
 			if(sDao.insertRoom(prodhotel) == 1){
 				System.out.println("insert성공");
 			}else{

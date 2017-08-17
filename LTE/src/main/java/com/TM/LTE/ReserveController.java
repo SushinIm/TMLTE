@@ -50,6 +50,20 @@ public class ReserveController {
 		mav.setViewName("overseashotel");
 		return mav;
 	}
+	
+	@RequestMapping(value = "/tkdetail", method = RequestMethod.GET)
+	public ModelAndView tkdetail() {
+		mav = new ModelAndView();
+		mav.setViewName("ticketdetail");
+		return mav;
+	}
+
+	@RequestMapping(value = "/htdetail", method = RequestMethod.GET)
+	public ModelAndView htdetail() {
+		mav = new ModelAndView();
+		mav.setViewName("hoteldetail");
+		return mav;
+	}
 
 	@RequestMapping(value = "/ticketOverseas", method = RequestMethod.GET)
 	public ModelAndView toTicket() {

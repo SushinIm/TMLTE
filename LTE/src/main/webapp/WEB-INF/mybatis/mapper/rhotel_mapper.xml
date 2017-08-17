@@ -4,15 +4,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="rhotel">
-	<select id="checkLeftRoom" parameterType="RoomView">
+	<select id="checkLeftRoom" parameterType="rhotel" resultType="proom">
 	<![CDATA[
-		SELECT * FROM HTR WHERE HTR_NAME NOT IN(SELECT RH_HTKRNAME FROM RH WHERE ((RH_CHECKOUT > #{checkIn} and RH_CHECKIN < #{checkOut}) or (RH_CHECKOUT >= #{checkOut} and RH_CHECKIN < #{checkIn}) or (RH_CHECKIN>#{checkIn} and RH_CHECKOUT < #{checkOut}))and RH_STATE=0) and HTR_PNUM >= #{htr_pnum}";
+		SELECT * FROM HTR WHERE HTR_RNUM NOT IN(SELECT RH_HTRNUM FROM RH WHERE ((RH_CHECKOUT > #{rh_checkin} and RH_CHECKIN < #{rh_checkout}) or (RH_CHECKOUT >= #{rh_checkout} and RH_CHECKIN < #{rh_checkin}) or (RH_CHECKIN>#{rh_checkin} and RH_CHECKOUT < #{rh_checkout}))and RH_STATE=1 and RH_HTKRNAME = #{rh_htkrname}) and HTR_PNUM >= #{htr_pnum}
 	]]>
 	</select>
-	<insert id="reserveTheRoom" parameterType="ReserveHotel">
+	<insert id="reserveTheRoom" parameterType="rhotel">
 		INSERT INTO RH VALAUES('RH'||RH_NUM_SEQ.NEXTVAL,#{rh_htmid},#{rh_mid}, #{rh_checkin}, #{rh_checkout},#{rh_htkrname},#{rh_htegname},#{rh_htrname},#{rh_rnum},#{rh_price},1)
 	</insert>
 	<select id="selectedRoom" parameterType="String">
 		SELECT * FROM RH WHERE RH_MID = #{id}
 	</select>
+	<select id="gethtkrname" parameterType="String" resultType="String">
+		SELECT HT_KRNAME FROM HT WHERE HT_MID = #{htmid}
+	</select>
+	<select id="gethtegname" parameterType="String" resultType="String">
+		SELECT HT_EGNAME FROM HT WHERE HT_MID = #{htmid}
+	</select>
+	<!-- rh_htkrname -->
 </mapper>

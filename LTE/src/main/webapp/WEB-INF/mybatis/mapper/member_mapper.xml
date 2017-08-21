@@ -3,21 +3,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="member">
-	<select id="adminSeller" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
-		SELECT * FROM M WHERE M_PART = '숙박' or M_PART= '레저/입장권'
+	<insert id="memberInsert" parameterType="member">
+		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part})
+	</insert>
+	<insert id="sellerInsert" parameterType="member">
+		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part})
+	</insert>
+	<select id="getSecurityPw" parameterType="String" resultType="String">
+       SELECT M_PW FROM MEMBER WHERE M_ID=#{m_id} 	
+    </select>
+    <select id="getPart" parameterType="member" resultType="String">
+    	SELECT M_PART FROM MEMBER WHERE M_ID=#{m_id} AND M_PW=#{m_pw}
+    </select>
+    <select id="adminSeller" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
+		SELECT * FROM M
 	</select>
-	
-	<select id="adminBuyer" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
-		SELECT * FROM M WHERE M_PART = '일반'
+     <select id="idcheck" parameterType="String" resultType="String">
+		SELECT COUNT(*) FROM M WHERE M_ID=#{id}
 	</select>
-	
-	<select id="blackSeller" resultType="member">
-		SELECT M_BNUM, M_PART, B_MID, M_NAME, M_PHONE, M_BIRTH, B_DATE, B_REASON
-		FROM M INNER JOIN B
-		ON M_ID = B_MID
-		WHERE M_PART != '일반'
+	<select id="mypage" parameterType="String" resultType="member">
+		SELECT * FROM M WHERE M_ID=#{id}
 	</select>
+<<<<<<< HEAD
 	
 	
 	<insert id="addBlack" parameterType="member"><!-- #{b_mid}에 넣어줄 값 parameterType="member" --> 
@@ -31,4 +40,30 @@
 	<select id="getMemberInfo" parameterType="String" resultType="member">
 		SELECT * FROM M WHERE m_id = #{id}
 	</select>
+=======
+	<select id="mypageseller" parameterType="String" resultType="member">
+		SELECT * FROM M WHERE M_ID=#{id}
+	</select>
+	<update id="editinfosave" parameterType="member"> 
+		UPDATE M SET M_EMAIL=#{m_email}, M_PW=#{m_pw}, M_NAME=#{m_name}, M_PHONE=#{m_phone} WHERE M_ID=#{m_id}
+	</update>
+	<select id="getmemberinfo" parameterType="String" resultType="member">
+		SELECT * FROM M WHERE M_ID=#{id}
+	</select>
+	<select id="getmemberpart" parameterType="String" resultType="member">
+		SELECT M_PART FROM M WHERE M_ID=#{id}
+	</select>
+	<update id="editinfosaveseller" parameterType="member"> 
+		UPDATE M SET M_PW=#{m_pw}, M_NAME=#{m_name}, M_PHONE=#{m_phone} WHERE M_ID=#{m_id}
+	</update>
+	<update id="updatepw" parameterType="Map">
+       UPDATE M SET M_PW=#{newpw} WHERE M_ID=#{id} AND M_EMAIL=#{email}
+    </update>
+	<select id="findid" parameterType="member" resultType="String">
+       SELECT M_ID FROM M WHERE M_NAME=#{m_name} AND M_EMAIL=#{m_email}
+    </select>
+	<select id="findpw" parameterType="member" resultType="String">
+       SELECT COUNT(*) FROM M WHERE M_ID=#{m_id} AND M_EMAIL=#{m_email}
+    </select>
+>>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 </mapper>

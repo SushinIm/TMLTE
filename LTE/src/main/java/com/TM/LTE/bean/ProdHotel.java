@@ -1,6 +1,7 @@
 package com.TM.LTE.bean;
 
 public class ProdHotel {
+	private String ht_num;
 	private String ht_mid;
 	private String ht_krname;
 	private String ht_egname;
@@ -9,7 +10,7 @@ public class ProdHotel {
 	private String ht_msphone;
 	private String ht_addr;
 	private int ht_best;
-	 
+	
 	public String getHt_mid() {
 		return ht_mid;
 	}
@@ -58,6 +59,11 @@ public class ProdHotel {
 	public void setHt_best(int ht_best) {
 		this.ht_best = ht_best;
 	}
-	
-	
+	public String getHt_num() {
+		return ht_num;
+	}
+	public void setHt_num(String ht_num) {
+		this.ht_num = ht_num;
+	}
 }
+

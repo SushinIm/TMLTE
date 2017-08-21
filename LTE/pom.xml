@@ -114,6 +114,20 @@
 			<version>1</version>
 		</dependency>
 		
+		<!-- Mail -->
+		<dependency>
+   			 <groupId>javax.mail</groupId>
+ 			 <artifactId>mail</artifactId>
+ 			 <version>1.4</version>
+		</dependency>
+		
+		<!-- MailSender -->
+		<dependency>
+   			 <groupId>org.springframework</groupId>
+ 			 <artifactId>spring-context-support</artifactId>
+ 			 <version>4.1.6.RELEASE</version>
+		</dependency>
+		
 		<!-- spring-JDBC -->
 		<dependency>
 		    <groupId>org.springframework</groupId>

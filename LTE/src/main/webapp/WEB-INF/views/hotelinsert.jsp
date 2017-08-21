@@ -53,28 +53,56 @@
 	addLoadEvent(function() {
 		dynamicSelect("nationSelect", "citySelect");
 	});
+	var count = 0;
 	$(function(){
-		var count = 1;
+	
 		$('#omg').click(function(){
 			count=count+1;
-	        var frm = "<div>객실명 <input type='text' name='r_name" + count +"'/> 객실번호 <input type='text' name='r_num" + count +"'/>"
-	        		  + "객실 가격 <input type='text' name='r_price" + count +"'/> 최대인원 <input type='text' name='r_person" + count +"'/></div>";
+	        var frm = "<div>객실명 <input class='r_name' type='text' name='r_name" + count +"'/> 객실번호 <input class='r_num' type='text' name='r_num" + count +"'/>"
+	        		  + "객실 가격 <input class='r_price' type='text' name='r_price" + count +"'/> 최대인원 <input class='r_person' type='text' name='r_person" + count +"'/>"
+	        		  + "<input type='button' value='삭제' onclick='deleteClick(this)'/></div>";
 	        $('#frm').append($(frm));
 	        console.log(count);
 	    });  
+		
 		$('#hotelinsert').click(function(){
+			alert('클릭');
 			document.hotelInsertFrm.action="hotelWrite?count=" + count;
 			document.hotelInsertFrm.submit();
 	    });  
 	})
+	function deleteClick(obj)
+		{
+			count=count-1;
+			
+			var childArr = $('#frm').children('div');
+			console.log(childArr.length);
+			
+			var arr = $(obj).siblings();
+			var num = arr[0].name.substring(6);
+			
+			$(obj).parent().remove();
+			
+			for(var i=num-1; i<childArr.length; i++)
+			{
+				console.log($(childArr[i]).children('.r_name').attr("name"));
+				console.log("r_name" + i);
+				//childArr[i].name = "r_name" + i;
+				$(childArr[i]).children('.r_name').attr("name", "r_name" + i);
+				$(childArr[i]).children('.r_num').attr("name", "r_num" + i);
+				$(childArr[i]).children('.r_price').attr("name", "r_price" + i);
+				$(childArr[i]).children('.r_person').attr("name", "r_person" + i);
+			}
+			
+		}	
 </script>
 <body>
 	<div>
 		<form name="hotelInsertFrm" method="post"
 			enctype="multipart/form-data">
 			<div>
-				<input type="file" name="mainfile" onChange="fileChk(this)" /> <input
-					id="fileCheck1" type="hidden" name="fileCheck1" />
+				<input type="file" name="mainfile" onChange="fileChk(this)" /> 
+				<input id="fileCheck1" type="hidden" name="fileCheck1" />
 			</div>
 			<div>
 				호텔명(한글)<input type="text" name="krname" />
@@ -133,8 +161,7 @@
 					id="fileCheck3" type="hidden" name="fileCheck3" />
 			</div>
 			<input type="button" value="글작성" id="hotelinsert"/>
-		</form>
-	</div>
+		</form>	</div>
 </body>
 <script>
 	function fileChk(elem) { //파일 element받음

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- photel_mapper.xml : 회원관련 쿼리문 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="proom">
+	<insert id="insertRoom" parameterType="proom">
+		INSERT INTO HTR
+		VALUES(#{htr_rnum}, #{htr_htmid}, #{htr_name}, #{htr_price}, #{htr_pnum})
+	</insert>
+	<select id="selectRoom" parameterType="String" resultType="proom">
+		SELECT * FROM HTR WHERE HTR_HTMID = #{id}
+	</select>
+	<select id="selectRoomN" parameterType="proom" resultType="proom">
+		SELECT * FROM HTR WHERE HTR_HTMID = #{htr_htmid} AND HTR_RNUM = #{htr_rnum}
+	</select>
+	<delete id="deleteOneRoom" parameterType="proom">
+		DELETE FROM HTR WHERE
+		HTR_HTMID=#{htr_htmid} AND HTR_RNUM = #{htr_rnum}
+	</delete>
+	<delete id="deleteRoom" parameterType="String">
+		DELETE FROM HTR WHERE
+		HTR_HTMID=#{id}
+	</delete>
+	<update id="updateRoom" parameterType="proom">
+		UPDATE HTR
+		SET HTR_NAME=#{htr_name}, HTR_PRICE=#{htr_price}, HTR_PNUM=#{htr_pnum}
+		WHERE HTR_HTMID=#{htr_htmid} AND HTR_RNUM = #{htr_rnum}
+	</update>
+	<select id="getphotelroom" parameterType="String" resultType="photelroom">
+	   	   SELECT * FROM HTR WHERE HTR_HTMID=#{id} 
+	</select>
+</mapper>

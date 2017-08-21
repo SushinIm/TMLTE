@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 	<div id="header">
 	</div>
 	<div id="section">
@@ -73,4 +74,8 @@
 	}
 
 </script>
+=======
+
+</body>
+>>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 </html>

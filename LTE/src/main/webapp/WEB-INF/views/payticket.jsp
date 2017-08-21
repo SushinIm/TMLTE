@@ -7,17 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<div>
+		${aboutPay}
+	</div>
+	<input type="button" onclick="location.href='/'" value="확인"/>
 </body>
-<script><판매자 리스트></script>
-<tr>
-	<td>회원 고유번호</td>
-	<td>구분</td>
-	<td>이름</td>
-	<td>상호명</td>
-	<td>전화번호</td>
-	<td>사유</td>
-	<td>블랙리스트</td>
-</tr>
-
 </html>

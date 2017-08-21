@@ -8,7 +8,8 @@ public class ProdHotel {
 	private String ht_city;
 	private String ht_msphone;
 	private String ht_addr;
-	
+	private int ht_best;
+	 
 	public String getHt_mid() {
 		return ht_mid;
 	}
@@ -50,6 +51,12 @@ public class ProdHotel {
 	}
 	public void setHt_addr(String ht_addr) {
 		this.ht_addr = ht_addr;
+	}
+	public int getHt_best() {
+		return ht_best;
+	}
+	public void setHt_best(int ht_best) {
+		this.ht_best = ht_best;
 	}
 	
 	

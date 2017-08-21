@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>판매자 마이페이지</h1>
-
-<h3>판매자 상품 리스트</h3>
-<div>${sellerList}</div>
-<h3>판매자 상품 구매자 회원 리스트</h3>
-<div>${memberList}</div>
-<input type="hidden" value="${part}" name="part"/>
+	<form name="updateFrm" action="hotelUpdateFrm">
+		<input type="submit" value="수정" /> 
+		<input type="hidden" value="${hnum}" name="hnum" />
+	</form>
 </body>
 </html>

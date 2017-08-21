@@ -104,6 +104,7 @@
 </div>
 <a href="/tkdetail">눌러보시게</a>
 <a href="/htdetail">눌러보시게</a>
+<a href="/ardetail">눌러보시게</a>
 <script>
 	function insertProd() {
 		document.prodForm.action = "insertProdFrm";

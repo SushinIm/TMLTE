@@ -10,9 +10,13 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.TM.LTE.bean.Member;
+import com.TM.LTE.bean.ProdAir;
 import com.TM.LTE.bean.ProdRoom;
+import com.TM.LTE.bean.ReserveAir;
 import com.TM.LTE.bean.ReserveHotel;
 import com.TM.LTE.bean.ReserveTicket;
+import com.TM.LTE.dao.MemberDao;
 import com.TM.LTE.dao.ReserveDao;
 @Service
 public class ReserveManagement {
@@ -23,6 +27,8 @@ public class ReserveManagement {
 	private HttpServletRequest req;
 	@Autowired
 	private ReserveDao rDao;
+	@Autowired
+	private MemberDao mDao;
 	
 	public ModelAndView execute(int i) {
 		switch (i) {
@@ -46,6 +52,9 @@ public class ReserveManagement {
 			break;
 		case 9:
 			buyTicket();
+			break;
+		case 10:
+			lookingForReach();
 			break;
 		default:
 			break;
@@ -74,14 +83,14 @@ public class ReserveManagement {
 	private String makeLeftRoom(List<ProdRoom> rvList, String inDate, String outDate) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<div>");
-		sb.append("<div><ul><li>객실명</li><li>인원수</li><li>가격</li><li>예약하기</li></ul></div>");
+		sb.append("<div class='ulwrapper'><ul id='index'><li>객실번호</li><li>객실명</li><li>인원수</li><li>가격</li><li>예약하기</li></ul></div>");
 		for(int i=0; i<rvList.size(); i++)
 		{
 			ProdRoom pr = rvList.get(i);
-			sb.append("<div><form action='hotelReserve' method='post'>");
-			sb.append("<ul><li>"+pr.getHtr_rnum()+"<input type='hidden' name='htrrnum' value='"+pr.getHtr_rnum()+"'/>"+"</li>");
-			sb.append("<ul><li>"+pr.getHtr_name()+"<input type='hidden' name='htrname' value='"+pr.getHtr_name()+"'/>"+"</li>");
-			sb.append("<li name=''>"+pr.getHtr_pnum()+"<input type='hidden' name='htrpnum' value='"+pr.getHtr_pnum()+"'/>"+"</li>");
+			sb.append("<div class='ulwrapper'><form action='hotelReserve' method='post'>");
+			sb.append("<ul class='contents'><li>"+pr.getHtr_rnum()+"<input type='hidden' name='htrrnum' value='"+pr.getHtr_rnum()+"'/>"+"</li>");
+			sb.append("<li>"+pr.getHtr_name()+"<input type='hidden' name='htrname' value='"+pr.getHtr_name()+"'/>"+"</li>");
+			sb.append("<li>"+pr.getHtr_pnum()+"<input type='hidden' name='htrpnum' value='"+pr.getHtr_pnum()+"'/>"+"</li>");
 			sb.append("<li>"+pr.getHtr_price()+"<input type='hidden' name='htrprice' value='"+pr.getHtr_price()+"'/>"+"</li>");
 			sb.append("<input type='hidden' name='htrhtmid' value='"+pr.getHtr_htmid()+"'/>");
 			sb.append("<input type='hidden' name='inDate' value='"+inDate+"'/>");
@@ -153,5 +162,26 @@ public class ReserveManagement {
 		sb.append("<tr><td>"+rt.getRt_tnum()+"</td><td>"+adultc+"</td><td>"+childc+"</td><td>"+rt.getRt_total_price()+"</td></tr></table>");
 		mav.addObject("aboutPay", sb.toString());
 		mav.setViewName("payconfirm");
+	}
+	
+	private void lookingForReach() {
+		ProdAir pa = new ProdAir();
+		Member mb = new Member();
+		pa.setAir_tname(req.getParameter("type"));
+		pa.setAir_start(req.getParameter("from"));
+		String[] ends = req.getParameter("end").split("-");
+		pa.setAir_nation(ends[0]);
+		pa.setAir_city(ends[1]);
+		pa.setAir_reach(ends[2]);
+		String[] stimes = req.getParameter("stime").split("/");
+		pa.setAir_start(stimes[0]);
+		pa.setAir_stime(stimes[1]);
+		String[] etimes = req.getParameter("etime").split("/");
+		pa.setAir_end(etimes[0]);
+		pa.setAir_etime(etimes[1]);
+		pa.setAir_transfer(Integer.parseInt(req.getParameter("watp")));
+		mb = mDao.getMemberInfo(ss.getAttribute("id"));
+		mav.addObject("airProduct", pa);
+		mav.setViewName("airreserve");
 	}
 }

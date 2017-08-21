@@ -65,10 +65,10 @@ public class ReserveController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/ticketOverseas", method = RequestMethod.GET)
+	@RequestMapping(value = "/ardetail", method = RequestMethod.GET)
 	public ModelAndView toTicket() {
 		mav = new ModelAndView();
-		mav.setViewName("overseasticket");
+		mav.setViewName("airdetail");
 		return mav;
 	}
 
@@ -93,5 +93,10 @@ public class ReserveController {
 		return mav;
 	}  
 	
-
+	@RequestMapping(value = "/airReserve", method = RequestMethod.GET)
+	public ModelAndView reserveAir() {
+		mav = new ModelAndView();
+		mav = rm.execute(10);
+		return mav;
+	}
 }

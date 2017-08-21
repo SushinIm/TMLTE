@@ -5,10 +5,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 </head>
+<style>
+div.ulwrapper {
+	clear: both;
+}
+
+div.ulwrapper ul {
+	list-style: none;
+}
+
+div.ulwrapper ul#index li {
+	margin-bottom: 10px;
+}
+
+div.ulwrapper ul li {
+	text-align: center;
+	width: 15%;
+	float: left;
+}
+</style>
 <body>
 	<div id="prodimg"></div>
 	<div id="prodinfo">
@@ -20,10 +40,9 @@
 	</div>
 	<div id="reserveplan">
 		<form method="get" id="booking">
-			<input type="text" id="checkIn" name="checkIn" readonly="readonly" placeholder="체크인 날짜">
-			~
-			<input type="text" id="checkOut" name="checkOut" readonly="readonly" placeholder="체크아웃 날짜"> 
-			<select
+			<input type="text" id="checkIn" name="checkIn" readonly="readonly"
+				placeholder="체크인 날짜"> ~ <input type="text" id="checkOut"
+				name="checkOut" readonly="readonly" placeholder="체크아웃 날짜"> <select
 				name="rooms">
 				<option value="0">객실</option>
 				<option value="1">1인실</option>
@@ -31,10 +50,9 @@
 				<option value="3">3인실</option>
 				<option value="4">4인실</option>
 				<option value="5">5인 이상</option>
-			</select> 
-			<input type="hidden" name="htkrname" value="sushin2"/>
-			<input type="hidden" name="htegname" value="sshin2" />
-			<input type="button" value="방 검색" onclick="Aj()" />
+			</select> <input type="hidden" name="htkrname" value="sushin2" /> <input
+				type="hidden" name="htegname" value="sshin2" /> <input
+				type="button" value="방 검색" onclick="Aj()" />
 		</form>
 	</div>
 	<div id="reservereal"></div>

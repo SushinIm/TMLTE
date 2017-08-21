@@ -3,7 +3,7 @@ package com.TM.LTE.bean;
 public class Member {
 	private String m_id;
 	private String m_pw;
-	private int m_birth;
+	private String m_birth;
 	private int m_blacklist;
 	private String m_email;
 	private String m_phone;
@@ -24,10 +24,10 @@ public class Member {
 	public void setM_pw(String m_pw) {
 		this.m_pw = m_pw;
 	}
-	public int getM_birth() {
+	public String getM_birth() {
 		return m_birth;
 	}
-	public void setM_birth(int m_birth) {
+	public void setM_birth(String m_birth) {
 		this.m_birth = m_birth;
 	}
 	public int getBlacklist() {

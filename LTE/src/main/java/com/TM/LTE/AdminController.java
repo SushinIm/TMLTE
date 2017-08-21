@@ -11,9 +11,9 @@ import com.TM.LTE.service.AdminManagement;
 
 @Controller
 //@SessionAttributes("member")
-public class AdminComtroller {
+public class AdminController {
 	@Autowired
-	private AdminManagement am; //adminë¦¬ìŠ¤íŠ¸ì¶œë ¥ í´ë˜ìŠ¤
+	private AdminManagement am; //adminë¦¬ìŠ¤?Š¸ì¶œë ¥ ?´?˜?Š¤
 	
 	private ModelAndView mav;
 	

@@ -15,4 +15,7 @@
 		SET T_BEST = 1
 		WHERE T_NUM = #{t_num}
 	</update>
+	<select id="getpticket" parameterType="String" resultType="pticket">
+	   	   SELECT * FROM T WHERE T_MID=#{id} 
+	</select>
 </mapper>

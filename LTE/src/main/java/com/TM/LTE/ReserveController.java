@@ -50,21 +50,53 @@ public class ReserveController {
 		mav.setViewName("overseashotel");
 		return mav;
 	}
-
-	@RequestMapping(value = "/ticketOverseas", method = RequestMethod.GET)
-	public ModelAndView toTicket() {
+	
+	@RequestMapping(value = "/tkdetail", method = RequestMethod.GET)
+	public ModelAndView tkdetail() {
 		mav = new ModelAndView();
-		mav.setViewName("overseasticket");
+		mav.setViewName("ticketdetail");
 		return mav;
 	}
 
+	@RequestMapping(value = "/htdetail", method = RequestMethod.GET)
+	public ModelAndView htdetail() {
+		mav = new ModelAndView();
+		mav.setViewName("hoteldetail");
+		return mav;
+	}
 
-	@RequestMapping(value = "/ticketBuying", method = RequestMethod.GET)
-	public ModelAndView buyTicket() {
+	@RequestMapping(value = "/ardetail", method = RequestMethod.GET)
+	public ModelAndView toTicket() {
+		mav = new ModelAndView();
+		mav.setViewName("airdetail");
+		return mav;
+	}
+
+	@RequestMapping(value = "/hotelBooking", method = RequestMethod.GET)
+	public ModelAndView checkRoom() {
 		mav = new ModelAndView();
 		mav = rm.execute(7);
 		return mav;
 	}  
-	
 
+	@RequestMapping(value = "/hotelReserve", method = RequestMethod.GET)
+	public ModelAndView reserveHotel() {
+		mav = new ModelAndView();
+		mav = rm.execute(8);
+		return mav;
+	}  
+
+	@RequestMapping(value = "/ticketBuying", method = RequestMethod.GET)
+	public ModelAndView buyTicket() {
+		mav = new ModelAndView();
+		mav = rm.execute(9);
+		return mav;
+	}  
+	
+	@RequestMapping(value = "/airReserve", method = RequestMethod.GET)
+	public ModelAndView reserveAir() {
+		mav = new ModelAndView();
+		mav = rm.execute(10);
+		return mav;
+	}
 }

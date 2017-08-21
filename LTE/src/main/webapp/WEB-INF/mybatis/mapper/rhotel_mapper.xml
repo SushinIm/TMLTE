@@ -7,4 +7,7 @@
 	<select id="getHotelReserveList" parameterType="String" resultType="rhotel">
 	   	   SELECT * FROM RH WHERE RH_HTMID=#{id} 
 	</select>
+	<select id="getrhotel" parameterType="String" resultType="rhotel">
+	   	   SELECT * FROM RH WHERE RH_MID=#{id} 
+	</select>
 </mapper>

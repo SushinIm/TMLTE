@@ -15,10 +15,11 @@ public class PageMovingController {
 	      mav.setViewName("main");
 	      return mav;
 	   }
+
 	@RequestMapping(value = "/insertProdFrm", method = RequestMethod.GET)
 	public ModelAndView insertProdFrm() {
 		mav = new ModelAndView();
-		mav.setViewName("hotelinsert");
+		mav.setViewName("hotelInsert");
 		return mav;
 	}
 }

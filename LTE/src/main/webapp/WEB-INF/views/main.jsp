@@ -30,6 +30,7 @@
 =======
 	<div id="header">
 		<div id="home">
+			<a href="adminpage">관리자</a>
 			<a href="main.jsp"><img src="homeimage"/></a>
 		</div>
 		<div id="searchbar">

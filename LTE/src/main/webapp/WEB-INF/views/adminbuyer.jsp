@@ -1,46 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-${mlist}
-
+	<div id="header">
+	</div>
+	<div id="section">
+		<form>
+			<div>
+				<ul>
+					<li>예약자 성명 : <input type="text" name="m_name" value="${mbInfo.m_name}" /></li>
+					<li>예약자 연락처 : <input type="text" name="m_phone" value="${mbInfo.m_phone}" /></li>
+					<li>예약자 이메일 : <input type="text" name="m_email" value="${mbInfo.m_email}" /></li>
+					<li>예약자 생년월일 : <input type="text" name="m_birth" value="${mbInfo.m_birth}" /></li>
+				</ul>
+			</div>
+			<div>
+				<input type="button" value="탑승객 등록" />
+			</div>
+			<div id="seats">
+				<input type="button" value="추가" onclick="formAdd()"/>
+				<ul class="seatFrm">
+					<li>
+						등급 : <select>
+							<option>퍼스트</option>
+							<option>비즈니스</option>
+							<option>이코노미</option>
+						</select>
+					</li>
+					<li>
+						좌석 열 : <select>
+							<option>등급을 먼저 선택해 주십시오</option>
+						</select>
+					</li>
+					<li>	
+						좌석 행 : <select>
+							<option>좌석 행을 먼저 선택해 주십시오</option>
+						</select>
+					</li>
+					<li>
+						<input type="text" value="탑승객 검색" />온클릭으로 팝업 띄우면서 ajax 실행시켜서 탑승객 목록 출력
+					</li>
+					<li>
+						<input type="button" value="삭제" />	
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+	<div id="footer">
+	</div>
 </body>
-<script>
-	//$('#select').val();
-	function addblack(bnum){//추가버튼
-		//val value = $('#select option:selected').val();
-		alert("블랙리스트에 추가되었습니다.");
-	//--------------------------------------------------
-		
-		
+<script type="text/javascript">
+	/* 
+	$(document).ready(){
 	
-	//----------------------------------------------------
-		var reason = $("select option:selected").val();
-		var date = new Date();
-		var yy = date.getFullYear();
-		var mm = date.getMonth()+1;
-		var dd = date.getDate();
-		if(mm<10){
-			if(dd<10){
-				var today = yy+'-0'+mm+'-0'+dd;	
-			}
-			else{
-				var today = yy+'-0'+mm+'-'+dd;
-			}
-		}else{
-			if(dd<10){
-				var today = yy+'-'+mm+'-0'+dd;
-			}else{
-				var today = yy+'-'+mm+'-'+dd;
-			}
-		}
-		console.log(today);
-		location.href = "./blackbuyer?bnum="+bnum+"&stdate="+today+"&reason="+reason+"";
+	} 
+	*/
+	function formAdd(){
+		$('.seatFrm').clone().appendTo('#seats');
 	}
+	
+	function popupOpen(){
+		var popUrl = "test.html";	//팝업창에 출력될 페이지 URL
+		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+		window.open(popUrl,"",popOption);
+	}
+
 </script>
 </html>

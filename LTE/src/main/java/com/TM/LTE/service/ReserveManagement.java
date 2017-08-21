@@ -167,21 +167,10 @@ public class ReserveManagement {
 	private void lookingForReach() {
 		ProdAir pa = new ProdAir();
 		Member mb = new Member();
-		pa.setAir_tname(req.getParameter("type"));
-		pa.setAir_start(req.getParameter("from"));
-		String[] ends = req.getParameter("end").split("-");
-		pa.setAir_nation(ends[0]);
-		pa.setAir_city(ends[1]);
-		pa.setAir_reach(ends[2]);
-		String[] stimes = req.getParameter("stime").split("/");
-		pa.setAir_start(stimes[0]);
-		pa.setAir_stime(stimes[1]);
-		String[] etimes = req.getParameter("etime").split("/");
-		pa.setAir_end(etimes[0]);
-		pa.setAir_etime(etimes[1]);
-		pa.setAir_transfer(Integer.parseInt(req.getParameter("watp")));
-		mb = mDao.getMemberInfo(ss.getAttribute("id"));
+		//pa = rDao.getProductInfo(req.getParameter("prodnum"));
+		//mb = mDao.getMemberInfo(ss.getAttribute("id").toString());
 		mav.addObject("airProduct", pa);
+		mav.addObject("mbInfo", mb);
 		mav.setViewName("airreserve");
 	}
 }

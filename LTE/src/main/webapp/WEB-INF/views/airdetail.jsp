@@ -43,26 +43,26 @@
 			<form action="airReserve" method="get">
                 <input type="hidden" name="prodnum" value="ap1"/>
 				<ul>
-					<li>A503 <input type="hidden" name="type" value="A503"/></li>
-					<li>인천 국제공항<input type="hidden" name="from" value="인천 국제공항"/></li>
-					<li>도쿄 국제공항<input type="hidden" name="end" value="일본-도쿄-국제공항"/></li>
-					<li>2017-09-02/22:15 <input type="hidden" name="stime" value="2017-09-02/22:15"/></li>
-					<li>2017-09-03/00:30 <input type="hidden" name="etime" value="2017-09-03/00:30"/></li>
-					<li>1회 <input type="hidden" name="watp" value="1"/></li>
-					<li>97석 <input type="hidden" name="seats" value="97"/></li>
+					<li>A503</li>
+					<li>인천 국제공항</li>
+					<li>도쿄 국제공항</li>
+					<li>2017-09-02/22:15</li>
+					<li>2017-09-03/00:30</li>
+					<li>1회</li>
+					<li>97석</li>
                     <li><input type="submit" value="예약하기"/></li>
 				</ul>
 			</form>
             <form action="airReserve" method="get">
                 <input type="hidden" name="prodnum" value="ap2"/>
                 <ul>
-					<li>B503 <input type="hidden" name="type" value="A503"/></li>
-					<li>인천 국제공항 <input type="hidden" name="from" value="인천 국제공항"/></li>
-					<li>중국 베이징 <input type="hidden" name="to" value="일본 삿포로"/></li>
-					<li>2017-09-15/18:15 <input type="hidden" name="stime" value="2017-09-02/22:15"/></li>
-					<li>2017-09-15/22:30 <input type="hidden" name="etime" value="2017-09-03/00:30"/></li>
-					<li>0회<input type="hidden" name="watp" value="0"/></li>
-					<li>68석 <input type="hidden" name="seats" value="68"/></li>
+					<li>B503 </li>
+					<li>인천 국제공항 </li>
+					<li>중국 베이징 </li>
+					<li>2017-09-15/18:15 </li>
+					<li>2017-09-15/22:30 </li>
+					<li>0회 </li>
+					<li>68석 </li>
                     <li><input type="submit" value="예약하기"/></li>
 				</ul>
             </form>

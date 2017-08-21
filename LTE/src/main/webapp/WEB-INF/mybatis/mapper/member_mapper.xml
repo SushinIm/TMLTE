@@ -24,15 +24,11 @@
 		INSERT INTO B VALUES(#{b_mid}, #{b_reason}, default)
 	</insert>
 	
-	<!-- <select id="addBlack" parameterType="member">#{b_mid}에 넣어줄 값 parameterType="member" 
-		SELECT 
-	</select> -->
-	
-<!-- 	<insert id="addBlack" parameterType="member">
-		INSERT INTO M VALUES(#{m_bnum}, #{m_part}, #{m_name}, #{m_phone})
-	</insert> -->
-	
 	<select id="selectmid" parameterType="String" resultType="member">
-		SELECT M_ID FROM M WHERE m_bnum=#{id}
+		SELECT M_ID FROM M WHERE m_id=#{id}
+	</select>
+	
+	<select id="getMemberInfo" parameterType="String" resultType="member">
+		SELECT * FROM M WHERE m_id = #{id}
 	</select>
 </mapper>

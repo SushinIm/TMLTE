@@ -4,7 +4,35 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
-	<!-- <select id="adminSeller" resultType="member"> resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름 
-		SELECT * FROM M
+	<select id="adminSeller" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
+		SELECT * FROM M WHERE M_PART = '숙박' or M_PART= '레저/입장권'
+	</select>
+	
+	<select id="adminBuyer" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
+		SELECT * FROM M WHERE M_PART = '일반'
+	</select>
+	
+	<select id="blackSeller" resultType="member">
+		SELECT M_BNUM, M_PART, B_MID, M_NAME, M_PHONE, M_BIRTH, B_DATE, B_REASON
+		FROM M INNER JOIN B
+		ON M_ID = B_MID
+		WHERE M_PART != '일반'
+	</select>
+	
+	
+	<insert id="addBlack" parameterType="member"><!-- #{b_mid}에 넣어줄 값 parameterType="member" --> 
+		INSERT INTO B VALUES(#{b_mid}, #{b_reason}, default)
+	</insert>
+	
+	<!-- <select id="addBlack" parameterType="member">#{b_mid}에 넣어줄 값 parameterType="member" 
+		SELECT 
 	</select> -->
+	
+<!-- 	<insert id="addBlack" parameterType="member">
+		INSERT INTO M VALUES(#{m_bnum}, #{m_part}, #{m_name}, #{m_phone})
+	</insert> -->
+	
+	<select id="selectmid" parameterType="String" resultType="member">
+		SELECT M_ID FROM M WHERE m_bnum=#{id}
+	</select>
 </mapper>

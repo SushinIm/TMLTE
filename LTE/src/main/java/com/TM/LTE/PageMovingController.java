@@ -15,6 +15,12 @@ public class PageMovingController {
 	      mav.setViewName("main");
 	      return mav;
 	   }
+	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
+	public ModelAndView adminpage() {
+		mav = new ModelAndView();
+		mav.setViewName("adminpage");
+		return mav;
+	}
 	@RequestMapping(value = "/insertProdFrm", method = RequestMethod.GET)
 	public ModelAndView insertProdFrm() {
 		mav = new ModelAndView();

@@ -6,6 +6,7 @@ public class Image {
 	private String pi_path;
 	private String pi_detail;
 	private String pi_num;
+	private String pi_part;
 	
 	public String getPi_sysname() {
 		return pi_sysname;
@@ -37,5 +38,11 @@ public class Image {
 	}
 	public void setPi_detail(String pi_detail) {
 		this.pi_detail = pi_detail;
+	}
+	public String getPi_part() {
+		return pi_part;
+	}
+	public void setPi_part(String pi_part) {
+		this.pi_part = pi_part;
 	}
 }

@@ -7,40 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-${mlist}
 
 </body>
-<script>
-	//$('#select').val();
-	function addblack(bnum){//추가버튼
-		//val value = $('#select option:selected').val();
-		alert("블랙리스트에 추가되었습니다.");
-	//--------------------------------------------------
-		
-		
-	
-	//----------------------------------------------------
-		var reason = $("select option:selected").val();
-		var date = new Date();
-		var yy = date.getFullYear();
-		var mm = date.getMonth()+1;
-		var dd = date.getDate();
-		if(mm<10){
-			if(dd<10){
-				var today = yy+'-0'+mm+'-0'+dd;	
-			}
-			else{
-				var today = yy+'-0'+mm+'-'+dd;
-			}
-		}else{
-			if(dd<10){
-				var today = yy+'-'+mm+'-0'+dd;
-			}else{
-				var today = yy+'-'+mm+'-'+dd;
-			}
-		}
-		console.log(today);
-		location.href = "./blackbuyer?bnum="+bnum+"&stdate="+today+"&reason="+reason+"";
-	}
-</script>
 </html>

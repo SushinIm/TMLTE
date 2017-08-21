@@ -56,12 +56,7 @@
 <body>
 	<div id="header">
 		<div id="home">
-<<<<<<< HEAD
-			<a href="adminpage">관리자</a>
-			<a href="main.jsp"><img src="homeimage"/></a>
-=======
 			<a href="main.jsp"><img src="" /></a>
->>>>>>> 6d78c3a905a4add95850dc45692c31c932945a1b
 		</div>
 		<div id="searchbar">
 			<input type="text" id="searchtext" /><a href="#imagesearch_layer"
@@ -107,8 +102,6 @@
 		${airlist} ${hotellist} ${ticketlist}
 	</div>
 </div>
-<a href="/tkdetail">눌러보시게</a>
-<a href="/htdetail">눌러보시게</a>
 <script>
 	function insertProd() {
 		document.prodForm.action = "insertProdFrm";

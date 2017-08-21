@@ -8,8 +8,13 @@
 </head>
 <body>
 	<form name="updateFrm" action="hotelUpdateFrm">
+		<input type="hidden" value="${pnum}" name="pnum" />
+		<input type="hidden" name="count" value="${count}"/>
 		<input type="submit" value="수정" /> 
-		<input type="hidden" value="${hnum}" name="hnum" />
 	</form>
+	<form name="deleteFrm" action="hotelDeleteFrm">
+		<input type="submit" value="삭제" /> 
+	</form> 
+	
 </body>
 </html>

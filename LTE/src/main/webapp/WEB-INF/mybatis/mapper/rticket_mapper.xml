@@ -4,13 +4,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="rticket">
+	<select id="getTicketReserveList" parameterType="Integer" resultType="pticket">
+	   	   SELECT * FROM RT WHERE RT_TNUM=#{prod} 
+	</select>
 	<select id="countRtnum" resultType="pticket">
 		SELECT COUNT(*) FROM RT 
 	</select>
 	<select id="maxRtnum" resultType="pticket">
    		SELECT MAX(RT_NUM) FROM RT
 	</select>
-	<insert id="insertPayTicket" parameterType="rticket">
+	<!-- <insert id="insertPayTicket" parameterType="ReserveTicket">
 		INSERT INTO RT VALUES(#{rt_num}, #{rt_tnum}, #{rt_mnid}, #{rt_qty}, default, #{rt_total_price}, default)
-	</insert>
+	</insert> -->
 </mapper>

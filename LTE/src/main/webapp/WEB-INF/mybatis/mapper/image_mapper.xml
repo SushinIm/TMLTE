@@ -5,6 +5,14 @@
 
 <mapper namespace="image">
 	<select id="selectName" parameterType="String" resultType="image">
-	   	   SELECT PI_SYSNAME FROM PI WHERE PI_NUM=#{hnum}
+	   	   SELECT PI_SYSNAME FROM PI WHERE PI_NUM=#{pnum}
 	</select>
+	<delete id="deleteFileImage" parameterType="image">
+		DELETE FROM PI 
+		WHERE PI_NUM=#{pi_num} AND PI_PART = #{pi_part}
+	</delete>
+	<delete id="deleteImage" parameterType="String">
+		DELETE FROM PI WHERE
+		PI_NUM=#{pnum}
+	</delete>
 </mapper>

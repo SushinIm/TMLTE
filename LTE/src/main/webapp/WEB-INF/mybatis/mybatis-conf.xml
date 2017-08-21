@@ -11,13 +11,11 @@
 	<typeAliases> <!-- 사용할 빈을 Alias로 등록하여 사용 -->
 		<!-- <typeAlias alias="image" type="com.TM.LTE.bean.Image"/> -->
 		<typeAlias alias="member" type="com.TM.LTE.bean.Member"/>
-		
-		<!-- <typeAlias alias="bb" type="com.TM.LTE.bean.BuyerBlack"/> --> 
 		<!-- <typeAlias alias="passenger" type="com.TM.LTE.bean.Passenger"/>  -->
 		<!-- <typeAlias alias="pair" type="com.TM.LTE.bean.ProdAir"/> -->
 		<typeAlias alias="photel" type="com.TM.LTE.bean.ProdHotel"/>
-		<typeAlias alias="pticket" type="com.TM.LTE.bean.ProdTicket"/>
 		<typeAlias alias="proom" type="com.TM.LTE.bean.ProdRoom"/>
+		<typeAlias alias="pticket" type="com.TM.LTE.bean.ProdTicket"/>
 		<!-- <typeAlias alias="rair" type="com.TM.LTE.bean.ReserveAir"/>   -->
 		<typeAlias alias="rhotel" type="com.TM.LTE.bean.ReserveHotel"/> 
 		<typeAlias alias="rticket" type="com.TM.LTE.bean.ReserveTicket"/> 

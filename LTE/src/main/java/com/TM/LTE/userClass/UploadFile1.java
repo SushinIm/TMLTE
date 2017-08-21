@@ -19,7 +19,7 @@ public class UploadFile1 {
 	@Autowired
 	private SellerDao sDao;
 	
-	public LinkedHashMap<String, String> fileUp(MultipartHttpServletRequest multi, String hnum, String detail){
+	public LinkedHashMap<String, String> fileUp(MultipartHttpServletRequest multi, String pnum, String detail){
 		System.out.println("fileUp");
 		//1.저장경로 찾기
 		String root=multi.getSession().getServletContext().getRealPath("\\");
@@ -44,7 +44,7 @@ public class UploadFile1 {
 					+oriFileName.substring(oriFileName.lastIndexOf(".")+1);
 			fMap.put("sysFileName"+i, sysFileName);
 			fMap.put("path"+i, path);
-			fMap.put("hnum"+i, hnum);
+			fMap.put("pnum"+i, pnum);
 			fMap.put("detail"+i, detail);
 			//5.메모리->실제 파일 업로드
 			try {

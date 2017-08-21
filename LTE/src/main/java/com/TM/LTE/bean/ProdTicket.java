@@ -9,6 +9,8 @@ public class ProdTicket {
 	private String t_name;
 	private String t_aprice;
 	private String t_cprice;
+	private String t_start_date;
+	private String t_end_date;
 	private String t_stock;
 	private int t_best;
 	
@@ -59,6 +61,18 @@ public class ProdTicket {
 	}
 	public void setT_cprice(String t_cprice) {
 		this.t_cprice = t_cprice;
+	}
+	public String getT_start_date() {
+		return t_start_date;
+	}
+	public void setT_start_date(String t_start_date) {
+		this.t_start_date = t_start_date;
+	}
+	public String getT_end_date() {
+		return t_end_date;
+	}
+	public void setT_end_date(String t_end_date) {
+		this.t_end_date = t_end_date;
 	}
 	public String getT_stock() {
 		return t_stock;

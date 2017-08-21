@@ -42,10 +42,31 @@ public class SellerController {
 		mav = sm.execute(3);
 		return mav;
 	}
+	@RequestMapping(value = "/hotelDeleteFrm", method = RequestMethod.GET)
+	public ModelAndView hotelDeleteFrm() {
+		System.out.println("hotelDeleteFrm");
+		mav=new ModelAndView();
+		mav = sm.execute(4);
+		return mav;
+	}
+	/*@RequestMapping(value = "/updateClick", method = RequestMethod.POST)
+	public ModelAndView updateClick() {
+		System.out.println("updateClick");
+		mav=new ModelAndView();
+		mav = sm.execute(5);
+		return mav;
+	}
+	@RequestMapping(value = "/deleteClick", method = RequestMethod.POST)
+	public ModelAndView deleteClick() {
+		System.out.println("deleteClick");
+		mav=new ModelAndView();
+		mav = sm.execute(6);
+		return mav;
+	}*/
 	
 	@RequestMapping(value = "/hotelWrite")
 	public ModelAndView hotelWrite(MultipartHttpServletRequest multi) {
-		System.out.println("hotelWrite");
+		System.out.println("hotelWrite2");
 		MultipartFile mfile1 = multi.getFile("mainfile");
 		MultipartFile mfile2 = multi.getFile("subfile");
 		MultipartFile mfile3 = multi.getFile("etcfile");
@@ -54,6 +75,19 @@ public class SellerController {
 		System.out.println("file name=" + mfile3.getOriginalFilename());
 		mav=new ModelAndView();
 		mav = sm.execute(multi, 1);
+		return mav;
+	}
+	@RequestMapping(value = "/allupdateclick")
+	public ModelAndView allupdateclick(MultipartHttpServletRequest multi) {
+		System.out.println("allupdateclick");
+		MultipartFile mfile1 = multi.getFile("mainfile");
+		MultipartFile mfile2 = multi.getFile("subfile");
+		MultipartFile mfile3 = multi.getFile("etcfile");
+		System.out.println("file name=" + mfile1.getOriginalFilename());
+		System.out.println("file name=" + mfile2.getOriginalFilename());
+		System.out.println("file name=" + mfile3.getOriginalFilename());
+		mav=new ModelAndView();
+		mav = sm.execute(multi, 2);
 		return mav;
 	}
 	

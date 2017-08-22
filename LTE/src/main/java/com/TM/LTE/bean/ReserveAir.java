@@ -3,7 +3,6 @@ package com.TM.LTE.bean;
 public class ReserveAir {
 	private String ra_anum;
 	private String ra_num;
-<<<<<<< HEAD
 	private String ra_id;
 	private int ra_seatnum;
 	private String ra_name;
@@ -11,14 +10,6 @@ public class ReserveAir {
 	private int ra_totalprice;
 	private String ra_grade;
 	private String ra_mnum;
-=======
-	private int ra_seatnum;
-	private String ra_grade;
-	private String ra_name;
-	private String ra_date;
-	private String ra_totalprice;
-	
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 	public String getRa_anum() {
 		return ra_anum;
 	}
@@ -31,30 +22,18 @@ public class ReserveAir {
 	public void setRa_num(String ra_num) {
 		this.ra_num = ra_num;
 	}
-<<<<<<< HEAD
 	public String getRa_id() {
 		return ra_id;
 	}
 	public void setRa_id(String ra_id) {
 		this.ra_id = ra_id;
 	}
-=======
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 	public int getRa_seatnum() {
 		return ra_seatnum;
 	}
 	public void setRa_seatnum(int ra_seatnum) {
 		this.ra_seatnum = ra_seatnum;
 	}
-<<<<<<< HEAD
-=======
-	public String getRa_grade() {
-		return ra_grade;
-	}
-	public void setRa_grade(String ra_grade) {
-		this.ra_grade = ra_grade;
-	}
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 	public String getRa_name() {
 		return ra_name;
 	}
@@ -67,7 +46,6 @@ public class ReserveAir {
 	public void setRa_date(String ra_date) {
 		this.ra_date = ra_date;
 	}
-<<<<<<< HEAD
 	public int getRa_totalprice() {
 		return ra_totalprice;
 	}
@@ -87,12 +65,3 @@ public class ReserveAir {
 		this.ra_mnum = ra_mnum;
 	}
 }
-=======
-	public String getRa_totalprice() {
-		return ra_totalprice;
-	}
-	public void setRa_totalprice(String ra_totalprice) {
-		this.ra_totalprice = ra_totalprice;
-	}
-}
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a

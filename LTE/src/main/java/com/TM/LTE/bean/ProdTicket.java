@@ -1,7 +1,7 @@
 package com.TM.LTE.bean;
 
 public class ProdTicket {
-	private String t_num;
+	private int t_num;
 	private String t_mid;
 	private String t_nation;
 	private String t_city;
@@ -9,8 +9,6 @@ public class ProdTicket {
 	private String t_name;
 	private String t_aprice;
 	private String t_cprice;
-	private String t_start_date;
-	private String t_end_date;
 	private String t_stock;
 	private int t_best;
 	
@@ -20,10 +18,10 @@ public class ProdTicket {
 	public void setT_best(int t_best) {
 		this.t_best = t_best;
 	}
-	public String getT_num() {
+	public int getT_num() {
 		return t_num;
 	}
-	public void setT_num(String t_num) {
+	public void setT_num(int t_num) {
 		this.t_num = t_num;
 	}
 	public String getT_mid() {
@@ -61,18 +59,6 @@ public class ProdTicket {
 	}
 	public void setT_cprice(String t_cprice) {
 		this.t_cprice = t_cprice;
-	}
-	public String getT_start_date() {
-		return t_start_date;
-	}
-	public void setT_start_date(String t_start_date) {
-		this.t_start_date = t_start_date;
-	}
-	public String getT_end_date() {
-		return t_end_date;
-	}
-	public void setT_end_date(String t_end_date) {
-		this.t_end_date = t_end_date;
 	}
 	public String getT_stock() {
 		return t_stock;

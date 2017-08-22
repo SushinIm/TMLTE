@@ -37,7 +37,6 @@ public class MemberDao {
 		return sqlSession.selectOne("member.getSecurityPw", m_id);
 
 	}
-<<<<<<< HEAD
 	public void addBlack(Member mb) {
 		sqlSession.selectList("member.addBlack",mb);
 	}
@@ -48,7 +47,7 @@ public class MemberDao {
 
 	public Member selectmid(String id) {
 		return sqlSession.selectOne("member.selectmid",id);
-=======
+	}
 	public int hashMapTest(Map<String, String> hmap) { 
 		return sqlSession.selectOne("member.hashMapTest",hmap);		
 	}
@@ -111,7 +110,6 @@ public class MemberDao {
 
 	public int editinfosave(Member mb){ //정보수정(일반) , (판매자)
 		return sqlSession.update("member.editinfosave",mb);
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 	}
 
 	public String findpw(Member mbr) {

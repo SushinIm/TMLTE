@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.TM.LTE.bean.Member;
+import com.TM.LTE.bean.Passenger;
 import com.TM.LTE.bean.ProdAir;
 import com.TM.LTE.bean.ProdRoom;
 import com.TM.LTE.bean.ReserveAir;
@@ -22,13 +23,11 @@ import com.TM.LTE.dao.ReserveDao;
 public class ReserveManagement {
 	private ModelAndView mav;
 	@Autowired
-	private HttpSession ss;
+	private HttpSession session;
 	@Autowired
 	private HttpServletRequest req;
 	@Autowired
 	private ReserveDao rDao;
-	@Autowired
-	private MemberDao mDao;
 	
 	public ModelAndView execute(int i) {
 		switch (i) {
@@ -56,6 +55,12 @@ public class ReserveManagement {
 		case 10:
 			lookingForReach();
 			break;
+		case 11:
+			addPassenger();
+			break;
+		case 12:
+			payAir();
+			break;
 		default:
 			break;
 		}
@@ -63,6 +68,7 @@ public class ReserveManagement {
 	}
 
 	private void lookingForRoom() {
+		mav = new ModelAndView();
 		ReserveHotel rh = new ReserveHotel();
 		String[] checkIn = req.getParameter("checkIn").split("-");
 		String inDate = checkIn[0]+checkIn[1]+checkIn[2];
@@ -103,10 +109,11 @@ public class ReserveManagement {
 	}
 
 	private void reserveTheRoom() {
+		mav = new ModelAndView();
 		ReserveHotel rh = new ReserveHotel();
 		rh.setRh_htmid(req.getParameter("htrhtmid"));
 		String htmid = rh.getRh_htmid();
-		rh.setRh_mid(ss.getAttribute("id").toString());
+		rh.setRh_mid(session.getAttribute("id").toString());
 		rh.setRh_checkin(req.getParameter("inDate"));
 		rh.setRh_checkout(req.getParameter("outDate"));
 		rh.setRh_htkrname(rDao.gethtkrname(htmid));
@@ -118,7 +125,7 @@ public class ReserveManagement {
 			mav.addObject("msg", "예약에 실패했다");
 			mav.setViewName("hoteldetail");
 		}else{
-			String rhList = makeBookedRoom(ss.getAttribute("id").toString());
+			String rhList = makeBookedRoom(session.getAttribute("id").toString());
 			mav.addObject("aboutPay", rhList);
 			mav.setViewName("payconfirm");
 		}
@@ -137,6 +144,7 @@ public class ReserveManagement {
 	}
 
 	private void buyTicket() {
+		mav = new ModelAndView();
 		ReserveTicket rt = new ReserveTicket();
 		rt.setRt_qty(Integer.parseInt(req.getParameter("qty")));
 		if(rDao.countRtnum()==0){
@@ -144,7 +152,7 @@ public class ReserveManagement {
 		}else{
 			rt.setRt_num(rDao.maxRtnum()+1);
 		}
-		rt.setRt_mnid(ss.getAttribute("id").toString());
+		rt.setRt_mnid(session.getAttribute("id").toString());
 		int adultc = Integer.parseInt(req.getParameter("adultc"));
 		int childc = Integer.parseInt(req.getParameter("childc"));
 		int adultP = adultc * Integer.parseInt(req.getParameter("adultP"));
@@ -153,24 +161,55 @@ public class ReserveManagement {
 		rt.setRt_tnum(req.getParameter("prodnum"));
 		rt.setRt_state("구매 완료");
 		rDao.insertPayTicket(rt);
-		payTicket(adultc, childc, rt);
-	}
-	
-	private void payTicket(int adultc, int childc, ReserveTicket rt) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("<table><tr><td>상품번호</td><td>성인 수</td><td>소아 수</td><td>총액</td></tr>");
-		sb.append("<tr><td>"+rt.getRt_tnum()+"</td><td>"+adultc+"</td><td>"+childc+"</td><td>"+rt.getRt_total_price()+"</td></tr></table>");
-		mav.addObject("aboutPay", sb.toString());
+		mav.addObject("adultcnt",adultc);
+		mav.addObject("childcnt",childc);
+		mav.addObject("reserveTcat",rt);
 		mav.setViewName("payconfirm");
 	}
 	
 	private void lookingForReach() {
-		ProdAir pa = new ProdAir();
-		Member mb = new Member();
+		mav = new ModelAndView();
 		//pa = rDao.getProductInfo(req.getParameter("prodnum"));
-		//mb = mDao.getMemberInfo(ss.getAttribute("id").toString());
-		mav.addObject("airProduct", pa);
-		mav.addObject("mbInfo", mb);
+		//mb = mDao.getMemberInfo(session.getAttribute("id").toString());
 		mav.setViewName("airreserve");
+	}
+	
+	private void addPassenger(){
+		mav = new ModelAndView();
+		Passenger pass;
+		int cnt = Integer.parseInt(req.getParameter("cnt"));
+		for(int i=1;i<=cnt;i++){
+			pass = new Passenger();
+			pass.setPs_mid(session.getAttribute("id").toString());
+			pass.setPs_separate(Integer.parseInt(req.getParameter("part"+i)));
+			pass.setPs_gender(req.getParameter("gender"+i));
+			pass.setPs_engfname(req.getParameter("engfname"+i));
+			pass.setPs_englname(req.getParameter("englname"+i));
+			pass.setPs_korname(req.getParameter("korname"+i));
+			pass.setPs_birth(req.getParameter("birth"+i));
+			if(rDao.addPassenger(pass)==0){
+				System.out.println("탑승객 추가 실패");
+			}
+			else{
+				System.out.println("탑승객 추가 성공");
+			}
+		}
+		mav.setViewName("forward:airReserve");
+	}
+	
+	private void payAir() {
+		mav = new ModelAndView();
+		ReserveAir ra;
+		int cnt = Integer.parseInt(req.getParameter("cnt"));
+		for(int i=1;i<=cnt;i++){
+			ra = new ReserveAir();
+			if(rDao.airReserve(ra)==0){
+				System.out.println("탑승객 추가 실패");
+			}
+			else{
+				System.out.println("탑승객 추가 성공");
+			}
+		}
+		mav.setViewName("forward:airReserve");
 	}
 }

@@ -11,7 +11,7 @@
 	<div id="header">
 	</div>
 	<div id="section">
-		<form>
+		<form name="payAirFrm" action="payAir" method="get">
 			<div>
 				<ul>
 					<li>예약자 성명 : <input type="text" name="m_name" value="${mbInfo.m_name}" /></li>
@@ -21,25 +21,25 @@
 				</ul>
 			</div>
 			<div>
-				<input type="button" value="탑승객 등록" onclick="popUpAddFrm()"/>
+				<input type="button" value="탑승객 등록" onclick="viewAddFrm()"/>
 			</div>
 			<div id="seats">
 				<input type="button" value="좌석 추가" onclick="formAdd()"/>
 				<ul class="seatFrm">
 					<li>
-						등급 : <select>
-							<option>퍼스트</option>
-							<option>비즈니스</option>
-							<option>이코노미</option>
+						등급 : <select name="grade1" onchange="seatList(this)">
+							<option value="퍼스트">퍼스트</option>
+							<option value="비즈니스">비즈니스</option>
+							<option value="이코노미">이코노미</option>
 						</select>
 					</li>
 					<li>
-						좌석 열 : <select>
+						좌석 열 : <select name="row1">
 							<option>등급을 먼저 선택해 주십시오</option>
 						</select>
 					</li>
 					<li>	
-						좌석 행 : <select>
+						좌석 행 : <select name="col1">
 							<option>좌석 행을 먼저 선택해 주십시오</option>
 						</select>
 					</li>
@@ -47,10 +47,11 @@
 						<input type="button" value="탑승객 검색" onclick="viewList()"/>
 					</li>
 					<li>
-						<input type="button" value="삭제" onclick="formRemove(this)"/>	
+						<input type="button" class="delBtn" value="삭제" onclick="formRemove(this)"/>	
 					</li>
 				</ul>
 			</div>
+			<input type="button" value="예약 결제" id="adder" />
 		</form>
 	</div>
 	<div id="footer">
@@ -58,17 +59,25 @@
 </body>
 <div id="bgbox">
     <div id="ctbox">
-        asdasd
     </div>
 </div>
 <script type="text/javascript">
     var cnt = 1;
-    
+    var del = '<li><input type="button" class="delBtn" value="삭제" onclick="formRemove(this)"/></li>';
     function formAdd(){
-        $('.seatFrm').clone().appendTo('#seats');
-        $('div#seats > ul').removeAttr('class');
-        $('div#seats > ul:first').attr('class', 'seatFrm');
-        console.log(++cnt);
+        console.log(++cnt);        
+        $('div#seats > ul:last input.delBtn').parent().remove();
+    	$('.seatFrm').clone().appendTo('#seats');
+    	$('div#seats > ul').removeAttr('class');
+   	 	$('div#seats > ul:first').attr('class', 'seatFrm');
+   	 	$('div#seats > ul:last select[name=grade1]').attr('name', 'grade'+cnt);
+	   	$('div#seats > ul:last input[name=row1]').attr('name', 'row'+cnt);
+	   	$('div#seats > ul:last input[name=col1]').attr('name', 'col'+cnt);
+   	 	$('div#seats > ul:last select[name=grade1]').attr('name', 'grade'+cnt);
+   	 	$("div#seats > ul:last select[name=grade1] option:eq(0)").prop("selected", true);
+	   	$('div#seats > ul:last input[name=row1]').empty();
+	   	$('div#seats > ul:last input[name=col1]').empty();
+   	 	$('div#seats > ul:last').append(del);
     }
     
     function formRemove(obj){
@@ -77,18 +86,32 @@
             console.log(cnt);
         }else{
             $(obj).parent().parent().remove();
+    	    $('div#seats > ul:last').append(del);
             console.log(--cnt);
         }
     }
 
-    function popUpAddFrm(){
-        var popUrl = 'addpassenger.jsp';	//팝업창에 출력될 페이지 URL
-        var popOption = 'width=800, height=450, resizable=no, scrollbars=auto, status=no, toolbar=no, menubar=no, directories=no;';
-        window.open(popUrl,'탑승자 등록 페이지',popOption);
+    function seatList(obj){
+    	console.log(obj);
+    	console.log($(obj).val());
+    }
+    
+    function viewAddFrm(){
+    	$('#bgbox').attr('class', 'open');
+    	$.ajax({
+            type:'get',
+            url:'./toAddPass',
+            success:function(data){
+                $('#ctbox').html(data);
+            },
+            error:function(error){
+                console.log(error);
+            }
+        });
     }
     
     function viewList(){
-        $('#bgbox').css('display', 'block');
+    	$('#bgbox').attr('class', 'open');
         $.ajax({
             type:'get',
             url:'./passSelect',
@@ -100,9 +123,13 @@
             }
         });
     }
-    
-    function examInsert(){
-    	
-    }
+
+	$(function(){
+		$('#adder').click(function(){
+			var hidcnt = '<input type="hidden" name="cnt" value="'+cnt+'" />';
+			$('div#seats').append(hidcnt);
+			document.payAirFrm.submit();
+		})
+	})
 </script>
 </html>

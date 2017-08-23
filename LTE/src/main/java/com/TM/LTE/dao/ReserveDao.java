@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.TM.LTE.bean.Passenger;
 import com.TM.LTE.bean.ProdRoom;
+import com.TM.LTE.bean.ReserveAir;
 import com.TM.LTE.bean.ReserveHotel;
 import com.TM.LTE.bean.ReserveTicket;
 @Repository
@@ -44,5 +46,14 @@ public class ReserveDao {
 
 	public String gethtegname(String htmid) {
 		return sqlSession.selectOne("rhotel.gethtegname",htmid);
+	}
+
+	public int addPassenger(Passenger pass) {
+		return sqlSession.insert("rair.addPassenger",pass);
+	}
+
+	public int airReserve(ReserveAir ra) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

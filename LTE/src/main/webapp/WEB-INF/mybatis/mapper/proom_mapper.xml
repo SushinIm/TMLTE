@@ -27,7 +27,7 @@
 		SET HTR_NAME=#{htr_name}, HTR_PRICE=#{htr_price}, HTR_PNUM=#{htr_pnum}
 		WHERE HTR_HTMID=#{htr_htmid} AND HTR_RNUM = #{htr_rnum}
 	</update>
-	<select id="getphotelroom" parameterType="String" resultType="photelroom">
+	<select id="getphotelroom" parameterType="String" resultType="proom">
 	   	   SELECT * FROM HTR WHERE HTR_HTMID=#{id} 
 	</select>
 </mapper>

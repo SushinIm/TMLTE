@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="rair">
-	<select id="getrair" parameterType="String" resultType="rair">
-	   	   SELECT * FROM RA WHERE RA_ID=#{id} 
-	</select>
+	<insert id="addPassenger" parameterType="passenger">
+		INSERT INTO PS VALUES('PS'||PS_MNUM_SEQ.NEXTVAL, #{ps_mid}, #{ps_separate}, #{ps_gender}, #{ps_engfname}, #{ps_englname}, #{ps_korname}, #{ps_birth})
+	</insert>
 </mapper>

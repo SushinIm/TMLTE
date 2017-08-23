@@ -45,7 +45,7 @@
 	<select id="getphotel" parameterType="String" resultType="photel">
 	   	   SELECT * FROM HT WHERE HT_MID=#{id} 
 	</select>
-	<select id="getphotelroom" parameterType="String" resultType="photelroom">
-            SELECT * FROM HTR WHERE HTR_HTMID=#{id} 
-    </select>
+	<select id="getphotelroom" parameterType="String" resultType="proom">
+	   	   SELECT * FROM HTR WHERE HTR_HTMID=#{id} 
+	</select>
 </mapper>

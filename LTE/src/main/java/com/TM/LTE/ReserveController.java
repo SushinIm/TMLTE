@@ -74,29 +74,37 @@ public class ReserveController {
 
 	@RequestMapping(value = "/hotelBooking", method = RequestMethod.GET)
 	public ModelAndView checkRoom() {
-		mav = new ModelAndView();
 		mav = rm.execute(7);
 		return mav;
 	}  
 
 	@RequestMapping(value = "/hotelReserve", method = RequestMethod.GET)
 	public ModelAndView reserveHotel() {
-		mav = new ModelAndView();
 		mav = rm.execute(8);
 		return mav;
 	}  
 
 	@RequestMapping(value = "/ticketBuying", method = RequestMethod.GET)
 	public ModelAndView buyTicket() {
-		mav = new ModelAndView();
 		mav = rm.execute(9);
 		return mav;
 	}  
 	
 	@RequestMapping(value = "/airReserve", method = RequestMethod.GET)
 	public ModelAndView reserveAir() {
-		mav = new ModelAndView();
 		mav = rm.execute(10);
+		return mav;
+	}
+
+	@RequestMapping(value = "/addPass", method = RequestMethod.GET)
+	public ModelAndView addPass() {
+		mav = rm.execute(11);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/payAir", method = RequestMethod.GET)
+	public ModelAndView payAir() {
+		mav = rm.execute(12);
 		return mav;
 	}
 }

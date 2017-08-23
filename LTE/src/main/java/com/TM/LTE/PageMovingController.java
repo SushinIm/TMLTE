@@ -27,4 +27,10 @@ public class PageMovingController {
 		mav.setViewName("hotelInsert");
 		return mav;
 	}
+	@RequestMapping(value = "/toAddPass", method = RequestMethod.GET)
+	public ModelAndView toAddPass() {
+		mav = new ModelAndView();
+		mav.setViewName("addpassenger");
+		return mav;
+	}
 }

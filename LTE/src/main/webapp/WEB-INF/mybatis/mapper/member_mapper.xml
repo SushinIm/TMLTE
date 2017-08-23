@@ -6,10 +6,10 @@
 
 <mapper namespace="member">
 	<insert id="memberInsert" parameterType="member">
-		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part})
+		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part},default)
 	</insert>
 	<insert id="sellerInsert" parameterType="member">
-		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part})
+		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part},default)
 	</insert>
 	<select id="getSecurityPw" parameterType="String" resultType="String">
        SELECT M_PW FROM MEMBER WHERE M_ID=#{m_id} 	
@@ -26,7 +26,6 @@
 	<select id="mypage" parameterType="String" resultType="member">
 		SELECT * FROM M WHERE M_ID=#{id}
 	</select>
-<<<<<<< HEAD
 	
 	
 	<insert id="addBlack" parameterType="member"><!-- #{b_mid}에 넣어줄 값 parameterType="member" --> 
@@ -40,7 +39,6 @@
 	<select id="getMemberInfo" parameterType="String" resultType="member">
 		SELECT * FROM M WHERE m_id = #{id}
 	</select>
-=======
 	<select id="mypageseller" parameterType="String" resultType="member">
 		SELECT * FROM M WHERE M_ID=#{id}
 	</select>
@@ -65,5 +63,4 @@
 	<select id="findpw" parameterType="member" resultType="String">
        SELECT COUNT(*) FROM M WHERE M_ID=#{m_id} AND M_EMAIL=#{m_email}
     </select>
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 </mapper>

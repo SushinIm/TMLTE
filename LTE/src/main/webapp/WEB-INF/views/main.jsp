@@ -139,11 +139,9 @@
 		${airlist} ${hotellist} ${ticketlist}
 	</div>
 </div>
-<<<<<<< HEAD
 <a href="/tkdetail">눌러보시게</a>
 <a href="/htdetail">눌러보시게</a>
 <a href="/ardetail">눌러보시게</a>
-=======
 <div id="login_layer">
    <div id="bg_layer2"></div>
    		<div id="contents_layer">
@@ -158,7 +156,6 @@
          </div>
    	</div>
 </div>
->>>>>>> 5dea1fb7d4188a66214634538c785d394404db0a
 <script>
 	function insertProd() {
 		document.prodForm.action = "insertProdFrm";

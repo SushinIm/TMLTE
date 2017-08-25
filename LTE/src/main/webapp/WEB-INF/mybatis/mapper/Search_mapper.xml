@@ -20,6 +20,33 @@
    		SELECT HT_NATION, HT_CITY, HT_KRNAME FROM HT WHERE HT_NUM=#{pi_num} 
   	</select>
 	<select id="ticketselect" resultType="Search" parameterType="String">
-   		SELECT T_NATION, T_CITY, T_NAME FROM T WHERE T_NUM=#{pi_num} 
+   		SELECT T_NATION, T_CITY, T_NAME FROM T WHERE T_NUM=#{pi_num}
+  	</select>
+	<select id="hotelsearch1" resultType="photel" parameterType="rhotel">
+	   	SELECT * FROM HT WHERE HT_KRNAME NOT IN (SELECT RH_HTKRNAME FROM RH WHERE((RH_CHECKOUT>#{rh_checkout} AND #{rh_checkin}>RH_CHECKIN)
+	   	OR(RH_CHECKIN>=#{rh_checkin} AND #{rh_checkin}>RH_CHECKIN)OR(RH_CHECKOUT>#{rh_checkout} AND #{rh_checkout}>RH_CHECKOUT))) 
+	   	AND HT_NATION=#{rh_nation} AND HT_CITY=#{rh_city}
+  	</select>
+	<select id="hotelsearch2" resultType="photel" parameterType="rhotel">
+	   	SELECT * FROM HT WHERE HT_KRNAME NOT IN (SELECT RH_HTKRNAME FROM RH WHERE((RH_CHECKOUT>#{rh_checkout} AND #{rh_checkin}>RH_CHECKIN)
+	   	OR(RH_CHECKIN>=#{rh_checkin} AND #{rh_checkin}>RH_CHECKIN)OR(RH_CHECKOUT>#{rh_checkout} AND #{rh_checkout}>RH_CHECKOUT)))
+	   	AND HT_NATION=#{rh_nation} AND HT_CITY=#{rh_city} AND HT_KRNAME=#{rh_htrname}
+  	</select>
+  	<select id="imageselectnum" resultType="image" parameterType="String">
+   		SELECT PI_NUM FROM PI WHERE PI_NUM=#{ht_num}
+  	</select>
+  	<select id="hotelselectprice" resultType="proom" parameterType="String">
+   		SELECT HTR_PRICE FROM HTR WHERE HTR_HTMID=#{ht_mid} AND HTR_PNUM=22
+  	</select>
+  	<select id="ticketsearch1" resultType="pticket" parameterType="pticket">
+   		SELECT * FROM T WHERE T_NATION=#{t_nation} AND T_CITY=#{t_city}
+  	</select>
+  	<select id="ticketsearch2" resultType="pticket" parameterType="pticket">
+   		SELECT * FROM T WHERE T_NATION=#{t_nation} AND T_CITY=#{t_city} AND T_TYPE=#{t_type}
+  	</select>
+  	<select id="ticketsearch3" resultType="pticket" parameterType="pticket">
+   		SELECT * FROM T WHERE T_NATION=#{t_nation} AND T_CITY=#{t_city} AND T_TYPE=#{t_type} AND T_NAME=#{t_name}
   	</select>
 </mapper>
+
+

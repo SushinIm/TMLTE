@@ -13,33 +13,63 @@ import com.TM.LTE.service.AdminManagement;
 //@SessionAttributes("member")
 public class AdminController {
 	@Autowired
-	private AdminManagement am; //adminÎ¶¨Ïä§?ä∏Ï∂úÎ†• ?Å¥?ûò?ä§
+	private AdminManagement am; //adminÎ¶¨Ïä§?ÔøΩÔøΩÏ∂úÎ†• ?ÔøΩÔøΩ?ÔøΩÔøΩ?ÔøΩÔøΩ
 	
 	private ModelAndView mav;
 	
-	@RequestMapping(value = "/adminSeller", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminseller", method = RequestMethod.GET)
 	public ModelAndView adminseller(Member mb) {
 		mav=am.execute(mb,1);
 		return mav;
 	}
-	@RequestMapping(value = "/adminBuyer", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminbuyer", method = RequestMethod.GET)
 	public ModelAndView adminbuyer(Member mb) {
 		mav=am.execute(mb,2);
 		return mav;
 	}
-	@RequestMapping(value = "/adminBlack", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminblack", method = RequestMethod.GET)
 	public ModelAndView adminblack(Member mb) {
 		mav=am.execute(mb,3);
 		return mav;
 	}
-	@RequestMapping(value = "/adminNotice", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminnotice", method = RequestMethod.GET)
 	public ModelAndView adminnotice(Member mb) {
 		mav=am.execute(mb,4);
 		return mav;
 	}
-	@RequestMapping(value = "/adminHistory", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminhistory", method = RequestMethod.GET)
 	public ModelAndView adminhistory(Member mb) {
 		mav=am.execute(mb,5);
+		return mav;
+	}
+	@RequestMapping(value = "/blackseller", method = RequestMethod.GET)
+	public ModelAndView blackseller(Member mb) {
+		System.out.println("bs");
+		mav=am.execute(mb,6);
+		return mav;
+	}
+	@RequestMapping(value = "/blackbuyer", method = RequestMethod.GET)
+	public ModelAndView blackbuyer(Member mb) {
+		System.out.println("bb");
+		mav=am.execute(mb,7);
+		return mav;
+	}
+	@RequestMapping(value = "/deleteblack", method = RequestMethod.GET)
+	public ModelAndView deleteblack(Member mb) {
+		System.out.println("bb");
+		mav=am.execute(mb,8);
+		return mav;
+	}
+	@RequestMapping(value = "/airinsert", method = RequestMethod.GET)
+	public ModelAndView airinsert() {
+		mav = new ModelAndView();
+		mav=am.Airexecute(1);
+		return mav;
+	}
+	@RequestMapping(value = "/flightprod", method = RequestMethod.GET)
+	public ModelAndView flightprod() {
+		mav = new ModelAndView();
+		mav=am.Airexecute(2);
 		return mav;
 	}
 }

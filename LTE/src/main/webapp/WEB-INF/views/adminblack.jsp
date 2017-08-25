@@ -7,11 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-asdasdas
-${mlist}
+<p>판매자 블랙리스트</p>
+${bslist}
+<p>일반회원 블랙리스트</p>
+${bblist}
+<input type ="button" name = "돌아가기" value = "돌아가기" onclick = "location.href='./adminpage'">
 </body>
 <script>
+	function deleteblack(b_mid){
+		console.log(b_mid);
 	
+	location.href = "./deleteblack?b_mid="+b_mid;
+	}
 </script>
 
 </html>

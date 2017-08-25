@@ -4,22 +4,30 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 <style>
-
+	#all{
+		width: 50%; 
+		height: 50%;
+		padding: 5px 0 5px p; 
+		margin: auto;
+	}
 </style>
 </head>
 <body>
-<h1>회원정보수정 전 페이지</h1>
+<jsp:include page="header.jsp"/>
+<div class="content-area">
+<div class="container"><br><br>
+<h4>회원정보수정 전 페이지</h4><br><br><br>
 <form name="editbeforesellerfrm" action="editinfoseller" method="post">
-	<table width="500px" height="300px" style="padding: 5px 0 5px 0; ">
+	<table id="all">
 		<tr height="2" bgcolor="#000000"><td colspan="2"></td></tr>
 		<tr>
-	         <td>아이디  </td>
+	         <th>아이디  </th>
 	         <td>
 	            <input name="m_id" value="${sessionScope.id}" readonly="readonly" readonly="readonly" style="background-color:lightgray">
 	         </td>
       	</tr>
  	  	<tr>
- 	  	     <td>비밀번호 확인 * </td>
+ 	  	     <th>비밀번호 확인 * </th>
 	         <td>
 	         	<input type="password" name="m_pw">
 	         </td>
@@ -33,6 +41,9 @@
 	  	</tr>
 	</table>
 </form>
+<br><br><br>
+</div>
+</div>
 </body>
 <script>
 	function main(obj){
@@ -41,3 +52,4 @@
 	}
 </script>
 </html>
+<jsp:include page="footer.jsp" />

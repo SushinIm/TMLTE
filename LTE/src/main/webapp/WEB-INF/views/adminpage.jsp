@@ -16,5 +16,6 @@
 		<td><a href="adminhistory">히스토리</a></td>
 	</tr>
 </table>
+	<input type ="button" name = "돌아가기" value = "홈으로" onclick = "location.href='./'">
 </body>
 </html>

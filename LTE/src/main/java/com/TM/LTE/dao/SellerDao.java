@@ -29,27 +29,31 @@ public class SellerDao {
 	}
 
 	public List<ProdTicket> getTicketProdList(String id) {
-		return sqlSession.selectList("pticket.get-getTicketProdList", id);
+		return sqlSession.selectList("pticket.getTicketProdList", id);
 	}
 
 	public List<ReserveHotel> getHotelReserveList(String id) {
 		return sqlSession.selectList("rhotel.getHotelReserveList", id);
 	}
 
-	public List<ReserveTicket> getTicketReserveList(int prod) {
-		return sqlSession.selectList("rticket.getTicketReserveList", prod);
+	public List<ReserveTicket> getTicketReserveList(String id) {
+		return sqlSession.selectList("rticket.getTicketReserveList", id);
+	}
+	
+	public ProdHotel selectProdH(String id) {
+		return sqlSession.selectOne("photel.selectProdH", id);
+	}
+	
+	public ProdTicket selectProdT(String id) {
+		return sqlSession.selectOne("pticket.selectProdT", id);
 	}
 
-	public int selectProd(String id) {
-		return sqlSession.selectOne("pticket.selectProd", id);
+	public int BestUpdateH(String id) {
+		return sqlSession.update("photel.BestUpdateH", id);
 	}
 
-	public int BestUpdateH(String ht_mid) {
-		return sqlSession.update("photel.BestUpdateH", ht_mid);
-	}
-
-	public int BestUpdateT(int t_num) {
-		return sqlSession.update("pticket.BestUpdateT", t_num);
+	public int BestUpdateT(String num) {
+		return sqlSession.update("pticket.BestUpdateT", num);
 	}
 
 	/*public int hotelWrite(LinkedHashMap<String, String> fMap) {
@@ -119,6 +123,24 @@ public class SellerDao {
 
 	public int updateRoom(ProdRoom pr) {
 		return sqlSession.update("proom.updateRoom", pr);
+	}
+
+	public int relUpdateH(String id) {
+		return sqlSession.update("photel.relUpdateH", id);
+	}
+
+	public int relUpdateT(String num) {
+		return sqlSession.update("pticket.relUpdateT", num);
+	}
+
+	public String selectBest(String id, String part) {
+		String best = null;
+		if(part.equals("숙박")){
+			 best = sqlSession.selectOne("photel.selectBest", id);
+		}else if(part.equals("레저/입장권")){
+			best = sqlSession.selectOne("pticket.selectBest", id);
+		}
+		 return best;
 	}
 
 }

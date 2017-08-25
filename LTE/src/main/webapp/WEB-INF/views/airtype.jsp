@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		${aboutPay}
-	</div>
-	<input type="button" onclick="location.href='/'" value="확인"/>
+
 </body>
 </html>

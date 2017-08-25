@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,77 +57,92 @@ div.ulwrapper ul li {
 		</form>
 	</div>
 	<div id="reservereal"></div>
+	<div>
+		<c:if test="${login eq '숙박'}">
+			<form name="updateFrm" action="hotelUpdateFrm">
+				<input type="hidden" value="${pnum}" name="pnum" /> <input
+					type="hidden" name="count" value="${count}" /> <input type="submit"
+					value="수정" />
+			</form>
+			<form name="deleteFrm" action="hotelDeleteFrm">
+				<input type="submit" value="삭제" />
+			</form>
+		</c:if>
+	</div>
 </body>
 <script type="text/javascript">
- $(function() { 
-    $("#checkIn").datepicker({
-        dateFormat: 'yy-mm-dd',
-        dayNamesMin: ['일','월','화','수','목','금','토'],
-        monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-        changeMonth : true,
-        changeYear : true,
-        showOtherMonths : true,
-        beforeShowDay:noBefore
-    });
- 
-    $("#checkOut").datepicker({
-	   dateFormat: 'yy-mm-dd',
-	   dayNamesMin: ['일','월','화','수','목','금','토'],
-	   monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-	   changeMonth : true,
-	   changeYear : true,
-	   showOtherMonths : true,
-	   beforeShowDay: noCheckIn
-    });
+	$(function() {
+		$("#checkIn").datepicker(
+				{
+					dateFormat : 'yy-mm-dd',
+					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+					monthNamesShort : [ "Jan", "Feb", "Mar", "Apr", "May",
+							"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+					changeMonth : true,
+					changeYear : true,
+					showOtherMonths : true,
+					beforeShowDay : noBefore
+				});
 
-	function noBefore(date){
-	    if (date < new Date())
-	        return [false];
-	    return [true];
-	}
-    
-    function noCheckIn(date){
-        var today = date;
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear(); 
-        var strArray = ($('#checkIn').val()).split('-');
-        var dates = 1*(strArray[0]+strArray[1]+strArray[2]);
-       
-        if(mm<10){
-            if(dd<10){
-                var tdates = yyyy+'0'+mm+'0'+dd;   
-            }
-            else{
-                var tdates = yyyy+'0'+mm+''+dd;
-            }
-        }else{
-            if(dd<10){
-                var tdates = yyyy+''+mm+'0'+dd;
-            }else{
-                var tdates = yyyy+''+mm+''+dd;
-            }
-        }
-        if(tdates*1 < dates+1)
-            return [false];
-        return [true];
-    }
-    
- });
- function Aj(){
- 	var params = $('#booking').serialize();
- 	$.ajax({
-		type : "get",
- 		url : "./hotelBooking",
- 		data : params,
- 		success : function(data){
- 			console.log(data);
- 			$('#reservereal').html(data);
- 		},
- 		error : function(error){
- 			alert(error+'발생');
- 		} 
+		$("#checkOut").datepicker(
+				{
+					dateFormat : 'yy-mm-dd',
+					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+					monthNamesShort : [ "Jan", "Feb", "Mar", "Apr", "May",
+							"Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+					changeMonth : true,
+					changeYear : true,
+					showOtherMonths : true,
+					beforeShowDay : noCheckIn
+				});
+
+		function noBefore(date) {
+			if (date < new Date())
+				return [ false ];
+			return [ true ];
+		}
+
+		function noCheckIn(date) {
+			var today = date;
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1; //January is 0!
+			var yyyy = today.getFullYear();
+			var strArray = ($('#checkIn').val()).split('-');
+			var dates = 1 * (strArray[0] + strArray[1] + strArray[2]);
+
+			if (mm < 10) {
+				if (dd < 10) {
+					var tdates = yyyy + '0' + mm + '0' + dd;
+				} else {
+					var tdates = yyyy + '0' + mm + '' + dd;
+				}
+			} else {
+				if (dd < 10) {
+					var tdates = yyyy + '' + mm + '0' + dd;
+				} else {
+					var tdates = yyyy + '' + mm + '' + dd;
+				}
+			}
+			if (tdates * 1 < dates + 1)
+				return [ false ];
+			return [ true ];
+		}
+
 	});
-}
+	function Aj() {
+		var params = $('#booking').serialize();
+		$.ajax({
+			type : "get",
+			url : "./hotelBooking",
+			data : params,
+			success : function(data) {
+				console.log(data);
+				$('#reservereal').html(data);
+			},
+			error : function(error) {
+				alert(error + '발생');
+			}
+		});
+	}
 </script>
 </html>

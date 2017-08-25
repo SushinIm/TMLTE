@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.TM.LTE.bean.Image;
 import com.TM.LTE.bean.Member;
 import com.TM.LTE.bean.ProdHotel;
 import com.TM.LTE.bean.ProdRoom;
@@ -22,8 +23,36 @@ public class MemberDao {
 	private SqlSessionTemplate sqlSession;
 
 	public List<Member> adminSeller() {
-		return sqlSession.selectList("member.adminSeller");
-	}
+	      return sqlSession.selectList("member.adminSeller");
+	   }
+	   public List<Member> adminBuyer() {
+			return sqlSession.selectList("member.adminBuyer");
+		}
+	   public List<Member> blackSeller(Member mb) {
+			return sqlSession.selectList("member.blackSeller",mb);
+		}
+	   public List<Member> blackBuyer(Member mb) {
+		   return sqlSession.selectList("member.blackBuyer",mb);
+	   }
+	   public Member selectmid(String id) {
+			return sqlSession.selectOne("member.selectmid",id);
+		}
+	   public void insertBlack(Member mb) {
+			sqlSession.selectList("member.insertBlack",mb);
+		}
+	   public void deleteBlack(Member mb){
+		   sqlSession.delete("member.deleteBlack",mb);
+	   }
+	   public int blackSelect(Member mb) {
+			return sqlSession.selectOne("member.blackSelect",mb);
+		}
+		public void blackSelect() {
+			
+		}
+		public int updateBlack(Member mb) {
+		    return sqlSession.update("member.updateBlack", mb);
+		}
+	//=========================================================
 
 	public int memberInsert(Member mb) { //회원가입(일반)
 		return sqlSession.insert("member.memberInsert", mb); //변수나 Bean을 넘겨줌
@@ -90,7 +119,7 @@ public class MemberDao {
 	}
 
 	public List<ProdRoom> getphotelroom(String id) {
-		return sqlSession.selectList("photelroom.getphotelroom", id);
+		return sqlSession.selectList("proom.getphotelroom", id);
 	}
 	
 	public String findid(Member mb) {
@@ -103,6 +132,29 @@ public class MemberDao {
 
 	public String findpw(Member mbr) {
 		return sqlSession.selectOne("member.findpw", mbr);
+	}
+	public List<ProdHotel> hotelbestnum() {
+		return sqlSession.selectList("photel.hotelbestnum");
+	}
+
+	public ProdHotel hotelbest(String arr) {
+		return sqlSession.selectOne("photel.hotelbest", arr);
+	}
+
+	public Image hotelbestimg(String arr) {
+		return sqlSession.selectOne("photel.hotelbestimg", arr);
+	}
+
+	public List<ProdTicket> ticketbestnum() {
+		return sqlSession.selectList("pticket.ticketbestnum");
+	}
+
+	public ProdTicket ticketbest(String arr) {
+		return sqlSession.selectOne("pticket.ticketbest", arr);
+	}
+	
+	public Image ticketbestimg(String arr) {
+		return sqlSession.selectOne("pticket.ticketbestimg", arr);
 	}
 }
 

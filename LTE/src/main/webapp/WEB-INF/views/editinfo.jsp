@@ -5,21 +5,31 @@
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<title>Insert title here</title>
 <style>
+	#all{
+		width: 100%; 
+		height: 50%;
+		padding: 5px 0 5px p; 
+		margin:auto;
+	}
 </style>
 </head>
 <body>
-<h1>일반 정보수정 페이지</h1>
+<jsp:include page="header.jsp"/>
+<div class="content-area">
+<div class="container"><br><br>
+<h4>정보수정(일반)</h4><br><br><br>
+
 <form name="editinfofrm" action="editinfosave" method="post">
-	<table width="700px" height="300px" style="padding: 5px 0 5px 0; ">
+	<table id="all">
 		<tr height="2" bgcolor="#000000"><td colspan="2"></td></tr>
 	    <tr>
-	        <td>아이디 </td>
+	        <th>아이디 </th>
 	        <td>
 	           <input name="m_id" value="${sessionScope.id}" readonly="readonly" style="background-color:lightgray">
 	        </td>
       	</tr>
       	<tr>
-	        <td>이메일 *</td>
+	        <th>이메일 *</th>
 		    <td>
 		    	<input type="text" name="m_email1" id="m_email1" value="${m_email1}">@
 		    	<input type="text" name="m_email2" id="m_email2" value="${m_email2}">
@@ -37,27 +47,27 @@
 		    </td>
       	</tr>
       	<tr>
-	        <td>변경할 비밀번호 * </td>
+	        <th>변경할 비밀번호 * </th>
 	        <td>
 	        	<input type="password" name="m_pw" id="pwOri" placeholder="PASSWORD" />
 	        </td>
       	</tr>
       	<tr>
-	        <td>비밀번호 확인 *</td>
+	        <th>비밀번호 확인 *</th>
 	        <td>
 	        	<input type="password" name="m_pw2" id="pwCheck" placeholder="PASSWORD" onchange="isSame()" /><br/><span id="same"></span>
 	        </td>
       	</tr>
       	<tr>
-	        <td>이름 *</td>
+	        <th>이름 *</th>
 		    <td>
 		    	<input type="text" name="m_name" value="${member.m_name}">
 		    </td>
       	</tr>
       	<tr>
-	        <td>전화번호 *</td>
+	        <th>전화번호 *</th>
 		    <td>
-		    	<input type="text" name="m_phone1" id="m_phone1" value="${m_phone1}"> -
+		    	<input type="text" name="m_phone1" id="m_phone1" readonly="readonly"  style="background-color:lightgray" value="010"> -
             	<input type="text" name="m_phone2" id="m_phone2" value="${m_phone2}"> -
             	<input type="text" name="m_phone3" id="m_phone3" value="${m_phone3}">
 		    </td>
@@ -71,7 +81,11 @@
 	  	</tr>
 	</table>
 </form>
+<br><br><br>
+</div>
+</div>
 </body>
+
 <script> 
 	function main(obj){
 		document.editinfofrm.action='main';
@@ -111,3 +125,4 @@
 	} 
 </script>
 </html>
+<jsp:include page="footer.jsp" />

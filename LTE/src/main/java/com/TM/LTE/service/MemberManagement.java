@@ -1,6 +1,7 @@
 package com.TM.LTE.service;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -65,13 +66,20 @@ public class MemberManagement {
 	    	  editinfosave(mb); break; //정보수정(일반)
 	      case 10:
 	    	  editinfosaveseller(mb); break; //정보수정(판매자)
+	      case 11:
+	    	  hotelbook(mb); break; //호텔이동
+	      case 12:
+	    	  ticket(mb); break; //티켓이동
+	      case 13:
+	    	  airbook(mb); break; //항공이동
 	      default:
 	         break;
 	      }
 	      return mav;
 	   }
 	   
-	   public String execute(int i) {
+
+	public String execute(int i) {
 		   switch(i){
 		   case 1:
 			   idcheck(); break; //아이디중복
@@ -323,6 +331,71 @@ public class MemberManagement {
 	       }
 		mav.setViewName("main");
 	}
+	 private void airbook(Member mb) {	//영호꺼랑 같이 수정
+		 mav=new ModelAndView();
+		  mav.setViewName("airbook");
+	}
+	 private void ticket(Member mb) {
+		   mav=new ModelAndView();
+		   List<ProdTicket>ptlist=mDao.ticketbestnum();
+		   ProdTicket a[] = ptlist.toArray(new ProdTicket[ptlist.size()]);
+		   String b[] = new String[a.length];
+		   Random r = new Random();
+		   StringBuilder sb=new StringBuilder();
+		   for(int i=0;i<=3;i++){
+			   b[i]=a[r.nextInt(a.length)].getT_num();
+			   for(int j=0;j<i;j++){
+				   if(b[i]==b[j]){
+					   i--;
+				   }
+			   }
+		   }
+		   for(int k=0;k<=3;k++){
+			   ProdTicket pt=mDao.ticketbest(b[k]);
+			  //Image img=mDao.ticketbestimg(b[k]);
+			  sb.append("<div class='best'>");
+			  /*sb.append("<div><a href='ticketdetail?ht_num="+pt.getT_num()+"'><img src='resources/hotel" +"/" + img.getPi_sysname() 
+			  + "' width = '150' height = '150'></a></div>");*/
+			  sb.append("<ul><li>"+pt.getT_name()+"</li>");
+			  sb.append("<li>"+pt.getT_nation()+"-"+pt.getT_city()+"</li>");
+			  sb.append("<li>"+pt.getT_cprice()+"원~"+"</li></ul>");
+			  sb.append("</div>");
+		   }
+		    mav.addObject("ticketbest",sb.toString());
+		    mav.setViewName("ticket");
+			
+		}
+	
+	private void hotelbook(Member mb) {
+		System.out.println(session.getAttribute("login"));
+		   mav=new ModelAndView();
+		   List<ProdHotel>phlist=mDao.hotelbestnum();
+		   ProdHotel a[] = phlist.toArray(new ProdHotel[phlist.size()]);
+		   String b[] = new String[a.length];
+		   Random r = new Random();
+		   StringBuilder sb=new StringBuilder();
+		   for(int i=0;i<=3;i++){
+			   b[i]=a[r.nextInt(a.length)].getHt_num();
+			   for(int j=0;j<i;j++){
+				   if(b[i]==b[j]){
+					   i--;
+				   }
+			   }
+		   }
+		   for(int k=0;k<=3;k++){
+			  ProdHotel ph=mDao.hotelbest(b[k]);
+			  //Image img=mDao.hotelbestimg(b[k]);
+			  sb.append("<div class='best'>");
+			  /*sb.append("<div><a href='hoteldetail?ht_num="+ph.getHt_num()+"'><img src='resources/hotel" +"/" + img.getPi_sysname() 
+			  + "' width = '150' height = '150'></a></div>");*/
+			  sb.append("<ul><li>"+ph.getHt_krname()+"</li>");
+			  sb.append("<li>"+ph.getHt_nation()+"-"+ph.getHt_city()+"</li>");
+			  sb.append("<li>"+ph.getHt_addr()+"</li></ul>");
+			  sb.append("</div>");
+		   }
+		    mav.addObject("hotelbest",sb.toString());
+		    mav.setViewName("hotelbook");
+	   }
 	
 	private void editinfosaveseller(Member mb) { //정보수정(판매자)
 		mav=new ModelAndView();
@@ -410,9 +483,9 @@ public class MemberManagement {
               session.setAttribute("id", mb.getM_id());
               mb.setM_pw(pwEncode);
               if(session.getAttribute("id") == null){
-                 mav.addObject("login", null);
+                 session.setAttribute("login", null);
               }else{
-                 mav.addObject("login", mDao.getPart(mb));
+                 session.setAttribute("login", mDao.getPart(mb));
                  System.out.println("메인");
               }
             }mav.setViewName("main");

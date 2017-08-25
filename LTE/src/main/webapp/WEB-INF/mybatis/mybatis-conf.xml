@@ -9,10 +9,10 @@
 		<setting name="defaultExecutorType" value="REUSE"/> 
 	</settings> 
 	<typeAliases> <!-- 사용할 빈을 Alias로 등록하여 사용 -->
-		<!-- <typeAlias alias="image" type="com.TM.LTE.bean.Image"/> -->
 		<typeAlias alias="member" type="com.TM.LTE.bean.Member"/>
-		<!-- <typeAlias alias="passenger" type="com.TM.LTE.bean.Passenger"/>  -->
+		<typeAlias alias="passenger" type="com.TM.LTE.bean.Passenger"/>
 		<!-- <typeAlias alias="pair" type="com.TM.LTE.bean.ProdAir"/> -->
+		<typeAlias alias="airtype" type="com.TM.LTE.bean.AirType"/>
 		<typeAlias alias="photel" type="com.TM.LTE.bean.ProdHotel"/>
 		<typeAlias alias="proom" type="com.TM.LTE.bean.ProdRoom"/>
 		<typeAlias alias="pticket" type="com.TM.LTE.bean.ProdTicket"/>

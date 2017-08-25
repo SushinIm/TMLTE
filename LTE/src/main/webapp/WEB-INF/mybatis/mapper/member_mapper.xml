@@ -6,10 +6,10 @@
 
 <mapper namespace="member">
 	<insert id="memberInsert" parameterType="member">
-		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part})
+		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part}, default)
 	</insert>
 	<insert id="sellerInsert" parameterType="member">
-		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part})
+		INSERT INTO M VALUES(#{m_id},#{m_pw},#{m_birth},#{m_email},#{m_phone},#{m_name},#{m_bnum},#{m_gender},#{m_part}, default)
 	</insert>
 	<select id="getSecurityPw" parameterType="String" resultType="String">
        SELECT M_PW FROM MEMBER WHERE M_ID=#{m_id} 	
@@ -18,8 +18,38 @@
     	SELECT M_PART FROM MEMBER WHERE M_ID=#{m_id} AND M_PW=#{m_pw}
     </select>
     <select id="adminSeller" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
-		SELECT * FROM M
+		SELECT * FROM M WHERE M_PART = '숙박' or M_PART= '레저/입장권'
 	</select>
+	<select id="adminBuyer" resultType="member"> <!--resultType="member"는 mybatis-conf.xml의 typeAlias alias 이름  -->
+		SELECT * FROM M WHERE M_PART = '일반'
+	</select>
+	<insert id="insertBlack" parameterType="member"><!-- #{b_mid}에 넣어줄 값 parameterType="member" --> 
+		INSERT INTO B VALUES(#{b_mid}, #{b_reason}, default)
+	</insert>
+	<delete id="deleteBlack" parameterType="member"><!-- #{b_mid}에 넣어줄 값 parameterType="member" --> 
+		DELETE FROM B WHERE B_MID = #{b_mid}
+	</delete>
+	<select id="blackSeller" resultType="member">
+		SELECT M_BNUM, M_PART, B_MID, M_NAME, M_PHONE, M_BIRTH, B_DATE, B_REASON
+		 FROM M INNER JOIN B ON M_ID = B_MID
+		 WHERE M_PART != '일반'
+	</select>
+	<select id="blackBuyer" resultType="member">
+		SELECT M_BNUM, M_PART, B_MID, M_NAME, M_PHONE, M_BIRTH, B_DATE, B_REASON
+		 FROM M INNER JOIN B ON M_ID = B_MID
+		 WHERE M_PART = '일반'
+	</select>
+	<select id="blackSelect" resultType="Integer" parameterType="member">
+		SELECT COUNT(*) FROM B
+		WHERE B_MID = #{m_id}
+	</select>
+	<select id="selectmid" parameterType="String" resultType="member">
+		SELECT M_ID FROM M WHERE m_id=#{id}
+	</select>
+	<update id="updateBlack" parameterType="Member">
+		UPDATE M SET M_BLACKLIST = 1 WHERE M_ID=#{m_id}
+	</update>
+	
      <select id="idcheck" parameterType="String" resultType="String">
 		SELECT COUNT(*) FROM M WHERE M_ID=#{id}
 	</select>

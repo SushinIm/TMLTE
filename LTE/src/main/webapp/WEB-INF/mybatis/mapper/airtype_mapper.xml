@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- airtype_mapper.xml : 회원관련 쿼리문 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="airtype">
+	<insert id="insertAirtype" parameterType="airtype">
+	INSERT INTO AT
+	VALUES(#{at_airtype}, #{at_frow}, #{at_fcol}, #{at_brow}, #{at_bcol}, #{at_erow}, #{at_ecol})
+	</insert>
+	<select id="selectAirtype" resultType="airtype">
+	SELECT * FROM AT
+	</select>
+</mapper>

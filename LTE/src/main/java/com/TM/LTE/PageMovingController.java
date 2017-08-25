@@ -15,11 +15,24 @@ public class PageMovingController {
 	      mav.setViewName("main");
 	      return mav;
 	   }
-
-	@RequestMapping(value = "/insertProdFrm", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminpage", method = RequestMethod.GET)
+	public ModelAndView adminpage() {
+		mav = new ModelAndView();
+		mav.setViewName("adminpage");
+		return mav;
+	}
+	@RequestMapping(value = "/airinsertFrm", method = RequestMethod.GET)
+	public ModelAndView airinsertFrm() {
+		mav = new ModelAndView();
+		System.out.println("airinsertFrm");
+		mav.setViewName("airinsert");
+		return mav;
+	}
+	@RequestMapping(value = "/hotelinsertFrm", method = RequestMethod.GET)
 	public ModelAndView insertProdFrm() {
 		mav = new ModelAndView();
-		mav.setViewName("hotelInsert");
+		System.out.println("hotelinsertFrm");
+		mav.setViewName("hotelinsert");
 		return mav;
 	}
 }

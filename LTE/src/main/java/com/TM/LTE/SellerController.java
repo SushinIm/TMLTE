@@ -26,14 +26,6 @@ public class SellerController {
 		//mav.setViewName("sellerpage");//.jsp
 		return mav;
 	}
-	@RequestMapping(value = "/bestProd", method = RequestMethod.GET)
-	public ModelAndView bestProd() {
-		System.out.println("bestProd");
-		mav=new ModelAndView();
-		mav = sm.execute(2);
-		//mav.setViewName("sellerpage");//.jsp
-		return mav;
-	}
 	
 	@RequestMapping(value = "/hotelUpdateFrm", method = RequestMethod.GET)
 	public ModelAndView hotelUpdateFrm() {
@@ -49,24 +41,10 @@ public class SellerController {
 		mav = sm.execute(4);
 		return mav;
 	}
-	/*@RequestMapping(value = "/updateClick", method = RequestMethod.POST)
-	public ModelAndView updateClick() {
-		System.out.println("updateClick");
-		mav=new ModelAndView();
-		mav = sm.execute(5);
-		return mav;
-	}
-	@RequestMapping(value = "/deleteClick", method = RequestMethod.POST)
-	public ModelAndView deleteClick() {
-		System.out.println("deleteClick");
-		mav=new ModelAndView();
-		mav = sm.execute(6);
-		return mav;
-	}*/
 	
-	@RequestMapping(value = "/hotelWrite")
+	@RequestMapping(value = "/hotelinsert")
 	public ModelAndView hotelWrite(MultipartHttpServletRequest multi) {
-		System.out.println("hotelWrite2");
+		System.out.println("hotelinsert");
 		MultipartFile mfile1 = multi.getFile("mainfile");
 		MultipartFile mfile2 = multi.getFile("subfile");
 		MultipartFile mfile3 = multi.getFile("etcfile");

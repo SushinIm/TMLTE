@@ -5,12 +5,19 @@
 	<title>Insert title here</title>
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 <style>
-
+	#all{
+		width:50%;
+		height:20%;
+		margin:auto;
+	}
 </style>
 </head>
 <body>
-    <fieldset>
-        <legend class="screen_out">아이디 찾기 폼</legend>
+<jsp:include page="header.jsp"/>
+<div class="content-area">
+<div class="container"><br><br>
+    <fieldset id="all">
+        <legend class="screen_out">아이디 찾기</legend>
  
         <div class="box name">
             <label for="name">이름</label>
@@ -30,11 +37,11 @@
         </div>
  		<div><span id="resultid"></span></div>
         <!-- // .box.btn -->
-    </fieldset>
+    </fieldset><br><br><br>
 	
 	<form id="findpwForm" name="findpwForm" method="post">
-    <fieldset>
-        <legend class="screen_out">비밀번호 찾기 폼</legend>
+    <fieldset id="all">
+        <legend class="screen_out">비밀번호 찾기</legend>
  
         <div class="box id">
             <label for="id">아이디</label>
@@ -55,7 +62,11 @@
         <!-- // .box.btn -->
     </fieldset>
 	</form>
+	<br><br><br>
+</div>
+</div>
 </body>
+
 <script>
 	$('#findidbtn').click(function(){  //아이디 찾기
 		   if($('#name').val()==""||$('#email1').val()==""){
@@ -104,3 +115,4 @@
 	});
 </script>
 </html>
+<jsp:include page="footer.jsp" />

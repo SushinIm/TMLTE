@@ -7,13 +7,22 @@
 <script src="resources/js/jquery-3.2.1.min.js"></script>
 <title>Insert title here</title>
 <style>
-
+#all{
+	width: 100%; 
+	height: 50%;
+	padding: 5px 0 5px p; 
+	margin:auto;
+}
 </style>
 </head>
 <body>
-<h1>회원정보입력(판매자)</h1>
+<jsp:include page="header.jsp"/>
+<div class="content-area">
+<div class="container"><br><br>
+<h4>회원가입(판매자)</h4><br><br><br>
+
 <form name="joinsellerfrm" method="post">
-   <table width="940" style="padding: 5px 0 5px p; ">
+   <table id="all">
       <tr height="2" bgcolor="#000000"><td colspan="2"></td></tr>
       <tr>
          <th>아이디 *</th>
@@ -25,7 +34,7 @@
             <input type="button" id="idcheckbtn" onclick="idcheck()" value="중복체크 "><span id="idcheck"></span>
          </td>
       </tr>
-  <tr>
+  	  <tr>
          <th>비밀번호 *</th>
          <td>
             <input type="password" id="pwOri" name="m_pw" placeholder="PASSWORD">
@@ -37,7 +46,6 @@
             <input type="password" id="pwCheck" name="m_pw2" placeholder="PASSWORD" onchange="isSame()"/>&nbsp;&nbsp;<span id="same"></span>
          </td>
       </tr>
-     <tr>
      <tr>
         <th>이메일 *</th>
          <td>
@@ -59,7 +67,7 @@
       <tr>
          <th>전화번호 *</th>
          <td>
-            <input type="text" id="phone1" name="m_phone1"> -
+            <input type="text" id="phone1" name="m_phone1" readonly="readonly"  style="background-color:lightgray" value="010"> -
             <input type="text" id="phone2" name="m_phone2"> -
             <input type="text" id="phone3" name="m_phone3">
          </td>
@@ -78,6 +86,7 @@
          <th>상호명 *</th>
          <td><input type="text" id="name" name="m_name" placeholder="NAME"></td>
       </tr>
+      
       <tr height="2" bgcolor="#000000"><td colspan="2"></td></tr>
       <tr>
          <td colspan="2" align="center">
@@ -87,6 +96,11 @@
       </tr>
    </table>
 </form>
+<br><br><br>
+</div>
+</div>
+</body>
+
 <script>
 function idcheck(){  /* //아이디 중복체크 */
 	   if($('#id').val()==""||$('#id').val()==null){
@@ -196,5 +210,5 @@ function idcheck(){  /* //아이디 중복체크 */
 	}
 
 </script>
-</body>
 </html>
+<jsp:include page="footer.jsp" />

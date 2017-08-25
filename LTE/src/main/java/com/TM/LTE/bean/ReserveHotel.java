@@ -13,6 +13,8 @@ public class ReserveHotel {
 	private int rh_rnum;
 	private String rh_state;
 	private int htr_pnum;
+	private String rh_nation;
+	private String rh_city;
 	
 	public int getRh_num() {
 		return rh_num;
@@ -85,5 +87,17 @@ public class ReserveHotel {
 	}
 	public void setHtr_pnum(int htr_pnum) {
 		this.htr_pnum = htr_pnum;
+	}
+	public String getRh_city() {
+		return rh_city;
+	}
+	public void setRh_city(String rh_city) {
+		this.rh_city = rh_city;
+	}
+	public String getRh_nation() {
+		return rh_nation;
+	}
+	public void setRh_nation(String rh_nation) {
+		this.rh_nation = rh_nation;
 	}
 }

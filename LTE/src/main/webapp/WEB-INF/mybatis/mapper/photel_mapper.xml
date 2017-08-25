@@ -10,10 +10,18 @@
 	<select id="getHotelProdList" parameterType="String" resultType="photel">
 	   	   SELECT * FROM HT WHERE HT_MID=#{id} 
 	</select>
+	<select id="selectProdH" parameterType="String" resultType="photel">
+	   	   SELECT HT_NUM, HT_MID FROM HT WHERE HT_MID=#{id} 
+	</select>
 	<update id="BestUpdateH" parameterType="String">
 		UPDATE HT
 		SET HT_BEST = 1
-		WHERE HT_MID = #{ht_mid}
+		WHERE HT_MID = #{id}
+	</update>
+	<update id="relUpdateH" parameterType="String">
+		UPDATE HT
+		SET HT_BEST = 0
+		WHERE HT_MID = #{id}
 	</update>
 	<insert id="insertWrite" parameterType="photel">
 		INSERT INTO HOTEL
@@ -45,7 +53,16 @@
 	<select id="getphotel" parameterType="String" resultType="photel">
 	   	   SELECT * FROM HT WHERE HT_MID=#{id} 
 	</select>
-	<select id="getphotelroom" parameterType="String" resultType="photelroom">
-            SELECT * FROM HTR WHERE HTR_HTMID=#{id} 
-    </select>
+	<select id="selectBest" parameterType="String" resultType="String">
+	   	   SELECT HT_BEST FROM HT WHERE HT_MID=#{id} 
+	</select>
+	<select id="hotelbestnum" resultType="photel">
+            SELECT HT_NUM FROM HT WHERE HT_BEST=1
+   	</select>
+	<select id="hotelbest" parameterType="String" resultType="photel">
+            SELECT * FROM HT WHERE HT_NUM=#{arr}
+   	</select>
+	<select id="hotelbestimg" parameterType="String" resultType="image">
+            SELECT * FROM PI WHERE PI_NUM=#{arr} AND PI_PART='main'
+   	</select>
 </mapper>

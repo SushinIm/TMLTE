@@ -6,6 +6,9 @@
 <style></style>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
+<div class="content-area">
+<div class="container"><br><br><br>
 <form name="joinendfrm" action="next" >
    <div width="940" style="padding: 5px 0 5px p; ">
       <div><h1>회원가입이 완료되었습니다.</h1></div><br/><br/>
@@ -13,7 +16,11 @@
    	  <input type="reset" value="홈으로" onclick="main(this)">
    </div>
 </form>
+<br><br><br>
+</div>
+</div>
 </body>
+
 <script>
 	function main(obj){ //메인으로
 	   document.joinendfrm.action='main';
@@ -21,3 +28,4 @@
 	}
 </script>
 </html>
+<jsp:include page="footer.jsp" />

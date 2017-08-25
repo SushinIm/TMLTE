@@ -6,7 +6,7 @@ public class Image {
 	private String pi_path;
 	private String pi_detail;
 	private String pi_num;
-	private String pi_part;
+	private int pi_part;
 	
 	public String getPi_sysname() {
 		return pi_sysname;
@@ -33,16 +33,18 @@ public class Image {
 	public void setPi_path(String pi_path) {
 		this.pi_path = pi_path;
 	}
+	
+	public int getPi_part() {
+		return pi_part;
+	}
+	public void setPi_part(int pi_part) {
+		this.pi_part = pi_part;
+	}
 	public String getPi_detail() {
 		return pi_detail;
 	}
 	public void setPi_detail(String pi_detail) {
 		this.pi_detail = pi_detail;
 	}
-	public String getPi_part() {
-		return pi_part;
-	}
-	public void setPi_part(String pi_part) {
-		this.pi_part = pi_part;
-	}
+	
 }

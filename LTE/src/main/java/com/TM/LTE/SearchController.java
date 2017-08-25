@@ -2,10 +2,13 @@ package com.TM.LTE;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.TM.LTE.bean.Member;
 import com.TM.LTE.service.SearchManagement;
 
 @Controller
@@ -15,24 +18,35 @@ public class SearchController {
 	@Autowired
 	private SearchManagement sm;
 	
-	/*@RequestMapping(value = "/contents")
-	   public ModelAndView contents() {
-		  System.out.println("asdf");
-	      mav = new ModelAndView();
-	      mav = sm.execute(1);
-	      return mav;
-	   }*/
-	
-	@RequestMapping(value = "/imagesearch")
+	@RequestMapping(value = "/ImageSearch")
 	public ModelAndView imagesearch(MultipartHttpServletRequest multi) {
-		//DB에서 게시판 리스트를 가져오는 서비스 제공
-		System.out.println("imagesearch");
+		//이미지 검색 부분
+		System.out.println("ImageSearch");
 		mav=new ModelAndView();
-		//System.out.println("title="+multi.getParameter("btitle"));
-		//MultipartFile mfile=multi.getFile("bfile");
-		//System.out.println("file name="+mfile.getOriginalFilename());  //파일이름
-		//System.out.println("file name="+mfile.getName()); --> 파라미터이름
-		mav=sm.execute(multi,1);  //글쓰기 화면 이동
+		mav=sm.execute(multi,1);  //검색서비스 이동
 		return mav;
 	}
+	
+	@RequestMapping(value = "ajax/hotelsearch")
+	public @ResponseBody String hotelsearch() {
+		String json=sm.execute(1);
+		return json;
+	}
+	
+	@RequestMapping(value = "ajax/ticketsearch")
+	public @ResponseBody String ticketsearch() {
+		String json=sm.execute(2);
+		return json;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

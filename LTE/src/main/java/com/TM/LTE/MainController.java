@@ -55,12 +55,6 @@ public class MainController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/mypageseller") //마이페이지(일반)
-	public ModelAndView mypageseller(@ModelAttribute("mb") Member mb) { //String -> model.addAtrribute("home");
-		mav=mm.execute(mb, 6);
-		return mav;
-	}
-	
 	@RequestMapping(value = "/editinfo") //정보수정전 비밀번호 체크
 	public ModelAndView editinfo(@ModelAttribute("mb") Member mb) { //String -> model.addAtrribute("home");
 		mav=mm.execute(mb, 7);
@@ -82,6 +76,21 @@ public class MainController {
 	@RequestMapping(value = "/editinfosaveseller") //정보수정(판매자)
     public ModelAndView editinfosaveseller(@ModelAttribute("mb") Member mb) { 
 		mav=mm.execute(mb, 10);
+		return mav;
+	}
+	@RequestMapping(value = "/hotelbook")
+	public ModelAndView hotelbook(@ModelAttribute("mb") Member mb) {
+		mav=mm.execute(mb, 11);
+		return mav;
+	}
+	@RequestMapping(value = "/ticket")
+	public ModelAndView ticket(@ModelAttribute("mb") Member mb) {
+		mav=mm.execute(mb, 12);
+		return mav;
+	}
+	@RequestMapping(value = "/airbook")
+	public ModelAndView airbook(@ModelAttribute("mb") Member mb) {
+		mav=mm.execute(mb, 13);
 		return mav;
 	}
 	

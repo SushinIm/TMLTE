@@ -2,6 +2,7 @@ package com.TM.LTE.bean;
 
 public class ReserveTicket {
 	private int rt_num;
+	private String rt_mid;
 	private String rt_tnum;
 	private String rt_mnid;
 	private int rt_qty;
@@ -9,12 +10,6 @@ public class ReserveTicket {
 	private int rt_total_price;
 	private String rt_state;
 	
-	public int getRt_num() {
-		return rt_num;
-	}
-	public void setRt_num(int rt_num) {
-		this.rt_num = rt_num;
-	}
 	public String getRt_tnum() {
 		return rt_tnum;
 	}
@@ -50,5 +45,18 @@ public class ReserveTicket {
 	}
 	public void setRt_state(String rt_state) {
 		this.rt_state = rt_state;
-	} 
+	}
+	public String getRt_mid() {
+		return rt_mid;
+	}
+	public void setRt_mid(String rt_mid) {
+		this.rt_mid = rt_mid;
+	}
+	public int getRt_num() {
+		return rt_num;
+	}
+	public void setRt_num(int rt_num) {
+		this.rt_num = rt_num;
+	}
+
 }

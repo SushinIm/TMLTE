@@ -11,7 +11,35 @@ public class Member {
 	private String m_bnum; //사업자번호or회원번호
 	private String m_gender; //성별
 	private String m_part;  //구분
-	
+	//BlackList
+	private String b_reason;
+	private String b_mid;
+	private String b_date;
+		
+	public int getM_blacklist() {
+		return m_blacklist;
+	}
+	public void setM_blacklist(int m_blacklist) {
+		this.m_blacklist = m_blacklist;
+	}
+	public String getB_reason() {
+		return b_reason;
+	}
+	public void setB_reason(String b_reason) {
+		this.b_reason = b_reason;
+	}
+	public String getB_mid() {
+		return b_mid;
+	}
+	public void setB_mid(String b_mid) {
+		this.b_mid = b_mid;
+	}
+	public String getB_date() {
+		return b_date;
+	}
+	public void setB_date(String b_date) {
+		this.b_date = b_date;
+	}
 	public String getM_id() {
 		return m_id;
 	}

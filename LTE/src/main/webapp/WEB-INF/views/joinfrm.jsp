@@ -2,16 +2,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="style_mj.css">
 <script src="//code.jquery.com/jquery.min.js"></script>
 <title>Insert title here</title>
 <style>
-
+	#all{
+		width: 100%; 
+		height: 50%;
+		padding: 5px 0 5px p; 
+		margin:auto;
+	}
 </style>
 </head>
-<body>
-<h1>회원정보입력(일반)</h1>
+<body> 
+<jsp:include page="header.jsp"/>
+<div class="content-area">
+<div class="container"><br><br>
+<h4>회원가입(일반)</h4><br><br><br>
+
 <form name="joinnormalfrm" method="post">
-   <table width="940" style="padding: 5px 0 5px p; ">
+   <table id="all">
       <tr height="2" bgcolor="#000000"><td colspan="2"></td></tr>
       <tr>
          <th>아이디 *</th>
@@ -26,7 +36,7 @@
       <tr>
          <th>비밀번호 *</th>
          <td>
-            <input type="password" id="pw" name="m_pw" placeholder="PASSWORD">
+            <input type="password" id="pwOri" name="m_pw" placeholder="PASSWORD">
          </td>
       </tr>
       <tr>
@@ -54,7 +64,7 @@
             <input type="text" id="email1" name="m_email1" >@
             <input type="text" id="email2" name="m_email2" readonly>
             <select name="selectEmail" id="selectEmail">
-           		  <option value="" selected>선택하기</option>
+                  <option value="" selected>선택하기</option>
                   <option value="naver.com">naver.com</option>
                   <option value="daum.net">daum.net</option>
                   <option value="hanmail.net">hanmail.net</option>
@@ -62,14 +72,14 @@
                   <option value="empal.com">empal.com</option>
                   <option value="msn.com">msn.com</option>
                   <option value="nate.com">nate.com</option>
-               	  <option value="1">직접입력</option>	
+                  <option value="1">직접입력</option>   
                </select>
         </td>
       </tr>
       <tr>
          <th>전화번호 *</th>
          <td>
-            <input type="text" id="phone1" name="m_phone1"> -
+            <input type="text" id="phone1" name="m_phone1" readonly="readonly"  style="background-color:lightgray" value="010"> -
             <input type="text" id="phone2" name="m_phone2"> -
             <input type="text" id="phone3" name="m_phone3">
          </td>
@@ -115,7 +125,7 @@
        <option value="1982">1982</option>
        <option value="1981">1981</option>
        <option value="1980">1980</option>
-       	 
+           
        
      </select>년&nbsp;
      <select name="m_birth2">
@@ -177,6 +187,11 @@
       </tr>
    </table>
 </form>
+<br><br><br>
+</div>
+</div>
+</body>
+
 <script>
    function idcheck(){  /* //아이디 중복체크 */
 	   if($('#id').val()==""||$('#id').val()==null){
@@ -252,10 +267,12 @@
 	      	document.joinnormalfrm.submit();
 	   }
    })
-//비밀번호 체크
+   
+  
+    //비밀번호 체크
    function isSame(){
-      var pw1 = document.getElementById('pw').value
-      var pw2 = document.getElementById('pwcheck').value
+      var pw1 = document.getElementById('pwOri').value
+      var pw2 = document.getElementById('pwCheck').value
       var pwSame = document.getElementById('same')
       if(pw1!='' && pw2!=''){
          if(pw1==pw2){
@@ -267,10 +284,11 @@
          }
       }
    }
+    
    function main(obj){ //메인으로
        location.href="./";
 	}
 
 </script>
-</body>
 </html>
+<jsp:include page="footer.jsp" />

@@ -7,15 +7,32 @@
 	<select id="getTicketProdList" parameterType="String" resultType="pticket">
 	   	   SELECT * FROM T WHERE T_MID=#{id} 
 	</select>
-	<select id="selectProd" parameterType="String" resultType="Integer">
-	   	   SELECT T_NUM FROM T WHERE T_MID=#{id} 
+	<select id="selectProdT" parameterType="String" resultType="pticket">
+	   	   SELECT T_NUM, T_MID FROM T WHERE T_MID=#{id} 
 	</select>
-	<update id="BestUpdateT" parameterType="Integer">
+	<update id="BestUpdateT" parameterType="String">
 		UPDATE T
 		SET T_BEST = 1
-		WHERE T_NUM = #{t_num}
+		WHERE T_NUM = #{num}
+	</update>
+	<update id="relUpdateT" parameterType="String">
+		UPDATE T
+		SET T_BEST = 0
+		WHERE T_NUM = #{num}
 	</update>
 	<select id="getpticket" parameterType="String" resultType="pticket">
 	   	   SELECT * FROM T WHERE T_MID=#{id} 
 	</select>
+	<select id="selectBest" parameterType="String" resultType="String">
+	   	   SELECT T_BEST FROM T WHERE T_MID=#{id} 
+	</select>
+	<select id="ticketbestnum" resultType="pticket">
+            SELECT T_NUM FROM T WHERE T_BEST=1
+   	</select>
+	<select id="ticketbest" parameterType="String" resultType="pticket">
+            SELECT * FROM T WHERE T_NUM=#{arr}
+   	</select>
+	<select id="ticketbestimg" parameterType="String" resultType="image">
+            SELECT * FROM PI WHERE PI_NUM=#{arr} AND PI_PART='main'
+   	</select>
 </mapper>

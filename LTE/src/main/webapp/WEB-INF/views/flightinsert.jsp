@@ -204,7 +204,7 @@ addLoadEvent(function() {
 			<option value="">50</option>
 		</select>
 	 </div>
-	 연락처 : 
+	 연락처 : <input type=""/>
 	 경유 여부 : <input name="chkbox" type="checkbox" onClick="checkDisable(this.form)">텍스트박스 비활성<br>
 	<input name="textbox" type="text">
 </body>
